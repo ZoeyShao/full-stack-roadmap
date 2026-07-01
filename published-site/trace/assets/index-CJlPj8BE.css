@@ -8,3 +8,347 @@
   Outdated base version: https://github.com/primer/github-syntax-light
   Current colors taken from GitHub's CSS
 */.hljs{color:#24292e;background:#fff}.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_{color:#d73a49}.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_{color:#6f42c1}.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-variable,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id{color:#005cc5}.hljs-regexp,.hljs-string,.hljs-meta .hljs-string{color:#032f62}.hljs-built_in,.hljs-symbol{color:#e36209}.hljs-comment,.hljs-code,.hljs-formula{color:#6a737d}.hljs-name,.hljs-quote,.hljs-selector-tag,.hljs-selector-pseudo{color:#22863a}.hljs-subst{color:#24292e}.hljs-section{color:#005cc5;font-weight:700}.hljs-bullet{color:#735c0f}.hljs-emphasis{color:#24292e;font-style:italic}.hljs-strong{color:#24292e;font-weight:700}.hljs-addition{color:#22863a;background-color:#f0fff4}.hljs-deletion{color:#b31d28;background-color:#ffeef0}
+
+
+/* Courseware skin for the upstream edtrace viewer. */
+:root {
+  --course-ink: #17212b;
+  --course-muted: #5d6875;
+  --course-line: #dce3ea;
+  --course-paper: #fbfaf7;
+  --course-panel: #ffffff;
+  --course-soft: #f6f8fa;
+  --course-accent: #0f766e;
+  --course-accent-soft: #e7f3ef;
+  --course-code: #eef2f5;
+}
+
+html {
+  background: var(--course-paper);
+}
+
+body {
+  display: block;
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--course-ink);
+  background: var(--course-paper);
+  font: 16px/1.62 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--course-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+button {
+  font: 14px/1 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.trace-viewer-container {
+  display: block;
+  width: min(100% - 32px, 1120px);
+  margin: 0 auto;
+  padding: 28px 0 72px;
+}
+
+.lines-panel {
+  width: 100%;
+  min-width: 0;
+  overflow: visible;
+}
+
+.header {
+  position: sticky;
+  top: 12px;
+  z-index: 100;
+  margin: 0 0 18px;
+  padding: 12px 14px 10px;
+  border: 1px solid var(--course-line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 10px 28px rgba(23, 33, 43, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--course-muted);
+  font: 600 14px/1.35 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.header-title > span:first-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.icon-buttons {
+  float: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.icon-buttons button {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--course-line);
+  border-radius: 7px;
+  color: var(--course-ink);
+  background: #fff;
+  cursor: pointer;
+}
+
+.icon-buttons button:hover {
+  border-color: var(--course-accent);
+  background: var(--course-accent-soft);
+}
+
+.line {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-items: start;
+  min-height: 24px;
+  padding: 1px 0;
+  border-radius: 6px;
+}
+
+.line:hover {
+  background: rgba(15, 118, 110, 0.04);
+}
+
+.line-number {
+  min-width: 0;
+  padding: 2px 12px 0 0;
+  color: #a1acb7;
+  font: 12px/1.8 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.line-number:hover {
+  color: var(--course-accent);
+}
+
+.line > span:last-child {
+  display: block;
+  min-width: 0;
+}
+
+.current-line {
+  background: #fff8d7;
+  outline: 1px solid #f1d985;
+}
+
+.code-container {
+  color: #26313d;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.renderings {
+  display: block;
+  width: auto;
+  max-width: 880px;
+}
+
+.course-trace-rendered .line:not(:has(.renderings)) {
+  display: none;
+}
+
+.course-trace-rendered .line:has(.renderings) {
+  display: block;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  outline: none;
+}
+
+.course-trace-rendered .line:has(.renderings) .line-number,
+.course-trace-rendered .line:has(.renderings) > span > .code-container {
+  display: none;
+}
+
+.course-trace-rendered .line:has(.renderings) > span {
+  display: block;
+}
+
+.course-trace-rendered .renderings {
+  max-width: none;
+  padding: 34px 48px 56px;
+  border: 1px solid var(--course-line);
+  border-radius: 8px;
+  background: var(--course-panel);
+  box-shadow: 0 18px 46px rgba(23, 33, 43, 0.08);
+}
+
+.markdown {
+  color: var(--course-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown p,
+.markdown ul,
+.markdown ol {
+  display: block;
+  line-height: 1.55;
+}
+
+.markdown h1 {
+  margin: 0 0 10px;
+  font: 700 30px/1.18 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.markdown h2 {
+  margin: 22px 0 10px;
+  padding-top: 16px;
+  border-top: 1px solid var(--course-line);
+  font: 700 19px/1.22 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.markdown h3 {
+  margin: 18px 0 8px;
+  font: 700 16px/1.25 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.markdown p {
+  margin: 0 0 12px;
+}
+
+.markdown p,
+.markdown li {
+  max-width: 76ch;
+}
+
+.markdown ul,
+.markdown ol {
+  margin: 0 0 14px;
+  padding-left: 22px;
+  list-style-position: outside;
+}
+
+.markdown li {
+  margin: 6px 0;
+}
+
+.markdown code {
+  border-radius: 5px;
+  padding: 1px 5px;
+  background: var(--course-code);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.92em;
+}
+
+.link-container {
+  display: inline-block;
+}
+
+.link-hover-panel {
+  min-width: min(620px, calc(100vw - 48px));
+  max-width: min(620px, calc(100vw - 48px));
+  border-color: var(--course-line);
+  border-radius: 8px;
+  box-shadow: 0 14px 38px rgba(23, 33, 43, 0.14);
+}
+
+.notes {
+  margin: 8px 0 8px 0;
+  padding: 10px 12px;
+  border-left: 3px solid var(--course-accent);
+  border-radius: 0 8px 8px 0;
+  color: var(--course-muted);
+  background: var(--course-soft);
+  font: italic 14px/1.5 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.env {
+  border: 1px solid var(--course-line);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 14px 38px rgba(23, 33, 43, 0.16);
+}
+
+.trace-path-prompt {
+  width: min(100% - 32px, 760px);
+  margin: 48px auto;
+  padding: 28px;
+  border: 1px solid var(--course-line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(23, 33, 43, 0.06);
+}
+
+.trace-path-input {
+  width: min(100%, 560px);
+}
+
+.trace-path-button {
+  background: var(--course-accent);
+}
+
+.trace-path-button:hover {
+  background: #0b5f58;
+}
+
+@media (max-width: 760px) {
+  .trace-viewer-container {
+    width: min(100% - 20px, 1120px);
+    padding-top: 14px;
+  }
+
+  .header {
+    top: 8px;
+    padding: 10px;
+  }
+
+  .header-title {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .icon-buttons {
+    justify-content: flex-start;
+  }
+
+  .line {
+    grid-template-columns: 34px minmax(0, 1fr);
+  }
+
+  .line-number {
+    padding-right: 8px;
+  }
+
+  .code-container {
+    font-size: 13px;
+  }
+
+  .course-trace-rendered .renderings {
+    padding: 24px 20px 36px;
+  }
+
+  .markdown h1 {
+    font-size: 24px;
+  }
+}

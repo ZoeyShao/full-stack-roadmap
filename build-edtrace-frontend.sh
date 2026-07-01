@@ -34,6 +34,17 @@ VITE_EDTRACE_BASE_DIR="$EDTRACE_BASE_DIR" \
 VITE_EDTRACE_DIST_DIR="$PUBLISH_DIR" \
   npm --prefix="$VIEWER_DIR/frontend" run build
 
+cp "$ROOT_DIR/trace-viewer-mathjax-shim.js" "$PUBLISH_DIR/mathjax-shim.js"
+sed -i.bak '/id="MathJax-script"/i\    <script src="mathjax-shim.js"></script>' "$PUBLISH_DIR/index.html"
+rm -f "$PUBLISH_DIR/index.html.bak"
+
+for css_file in "$PUBLISH_DIR"/assets/*.css; do
+  {
+    printf '\n\n'
+    cat "$ROOT_DIR/trace-viewer-overrides.css"
+  } >> "$css_file"
+done
+
 # The upstream template uses an absolute /vite.svg favicon path, which is noisy
 # on GitHub Pages project sites. The favicon is not needed for the courseware.
 sed -i.bak '/rel="icon".*vite\.svg/d' "$PUBLISH_DIR/index.html"
