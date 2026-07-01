@@ -88,6 +88,24 @@ npm --prefix=edtrace/frontend run dev
 https://<owner>.github.io/<repo>/trace/?trace=var/traces/edtrace_lectures.lecture_01.json
 ```
 
+默认构建假设仓库名是 `full-stack-roadmap`，所以 edtrace viewer 的 base path 是：
+
+```text
+/full-stack-roadmap/trace/
+```
+
+如果你换了仓库名，构建时覆盖：
+
+```bash
+EDTRACE_BASE_DIR="/<repo>/trace/" ./build-edtrace-frontend.sh
+```
+
+如果你用自定义域名并把站点部署到域名根路径，使用：
+
+```bash
+EDTRACE_BASE_DIR="/trace/" ./build-edtrace-frontend.sh
+```
+
 如果你用自定义域名或其他发布路径，也仍然可以用同样的相对 trace 路径：
 
 ```text

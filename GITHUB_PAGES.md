@@ -23,6 +23,18 @@ published-site/
 
 `trace/` 里已经包含 edtrace viewer 和 `var/traces/*.json`。
 
+默认构建假设 GitHub Pages URL 是：
+
+```text
+https://<owner>.github.io/full-stack-roadmap/
+```
+
+如果你的仓库名不是 `full-stack-roadmap`，构建时设置：
+
+```bash
+EDTRACE_BASE_DIR="/<repo>/trace/" ./build-github-pages-site.sh
+```
+
 ## 2. 发布方式 A：单独建一个 GitHub Pages 仓库
 
 如果你想让这个课程独立成站点，建一个新仓库，例如：
