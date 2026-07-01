@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>0005 React 状态、表单、数据获取和测试</title>
+<style>
+:root{--ink:#17212b;--muted:#5d6875;--line:#dce3ea;--soft:#f6f8fa;--accent:#0f766e;--note:#fff7df}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:white;font:17px/1.64 ui-serif,Georgia,"Noto Serif CJK SC",serif}main{max-width:920px;margin:0 auto;padding:46px 24px 76px}h1,h2,h3,.meta,summary,th,code{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:0}h1{margin:0 0 8px;font-size:34px;line-height:1.15}h2{margin:34px 0 12px;padding-top:18px;border-top:1px solid var(--line);font-size:22px}p{margin:0 0 14px}a{color:var(--accent);text-underline-offset:3px}code{background:var(--soft);border-radius:5px;padding:1px 5px}pre{overflow:auto;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:14px}table{width:100%;border-collapse:collapse;margin:14px 0}th,td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:left;vertical-align:top}th{color:var(--muted);font-size:12px;text-transform:uppercase}.meta{color:var(--muted);font-size:14px}.callout{border-left:4px solid var(--accent);background:var(--soft);padding:15px 17px;margin:18px 0}.note{border-left-color:#b68b00;background:var(--note)}details{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:10px 0;background:white}summary{cursor:pointer;font-weight:700}li{margin:7px 0}
+</style></head><body><main>
+<header>
+  <h1>0005 React 状态、表单、数据获取和测试</h1>
+  <p class="meta">Q1 Frontend Fundamentals | 预计 40 分钟 | <a href="../lectures/index.html?trace=lecture_05">lecture trace</a></p>
+  <p>真实前端不是只渲染静态组件，而是处理输入、请求、错误、缓存和用户可见的反馈。</p>
+</header>
+<section>
+  <h2>状态分类</h2>
+  <table><thead><tr><th>状态</th><th>例子</th><th>工具</th></tr></thead><tbody>
+    <tr><td>本地 UI 状态</td><td>弹窗是否打开、输入框内容。</td><td><code>useState</code>、<code>useReducer</code></td></tr>
+    <tr><td>派生状态</td><td>过滤后的列表、总价。</td><td>渲染时计算，不单独存。</td></tr>
+    <tr><td>服务端状态</td><td>项目列表、当前用户。</td><td>TanStack Query 等缓存工具。</td></tr>
+    <tr><td>URL 状态</td><td>搜索词、分页页码。</td><td>query string 或 router。</td></tr>
+  </tbody></table>
+</section>
+<section>
+  <h2>TanStack Query 模型</h2>
+  <pre><code>const projectsQuery = useQuery({
+  queryKey: ["projects", filter],
+  queryFn: () =&gt; fetchProjects(filter),
+});
+
+const createProject = useMutation({
+  mutationFn: createProjectRequest,
+  onSuccess: () =&gt; queryClient.invalidateQueries({ queryKey: ["projects"] }),
+});</code></pre>
+  <p><code>queryKey</code> 是缓存身份。改变服务器数据后，需要让相关缓存失效，否则 UI 可能显示旧数据。</p>
+</section>
+<section>
+  <h2>练习</h2>
+  <ol>
+    <li>做一个项目列表，显示 loading、error、empty、success 四种状态。</li>
+    <li>添加创建项目表单，成功后刷新列表。</li>
+    <li>为“提交成功后出现新项目”写一个测试。</li>
+    <li>说明哪些状态属于本地，哪些属于服务器。</li>
+  </ol>
+  <div class="callout note">交付物：一个带数据获取、表单和测试的 React 页面。</div>
+</section>
+<section>
+  <h2>自测</h2>
+  <details><summary>为什么不要把 filteredItems 存进 state？</summary><p>它可以从原始列表和筛选条件计算出来，重复存储会带来同步错误。</p></details>
+  <details><summary>mutation 成功后为什么常常要 invalidate query？</summary><p>因为服务器数据已经改变，相关缓存需要重新获取或更新。</p></details>
+  <details><summary>好前端测试更关注什么？</summary><p>关注用户能看到和能完成的行为，而不是组件内部实现细节。</p></details>
+</section>
+<section><h2>主资料</h2><p><a href="https://tanstack.com/query/latest/docs/framework/react/overview">TanStack Query React Docs</a>、<a href="https://vitest.dev/guide/">Vitest Guide</a>。</p></section>
+</main></body></html>

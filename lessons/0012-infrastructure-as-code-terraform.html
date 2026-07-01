@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>0012 Infrastructure as Code 与 Terraform</title>
+<style>
+:root{--ink:#17212b;--muted:#5d6875;--line:#dce3ea;--soft:#f6f8fa;--accent:#0f766e;--note:#fff7df}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:white;font:17px/1.64 ui-serif,Georgia,"Noto Serif CJK SC",serif}main{max-width:920px;margin:0 auto;padding:46px 24px 76px}h1,h2,h3,.meta,summary,th,code{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:0}h1{margin:0 0 8px;font-size:34px;line-height:1.15}h2{margin:34px 0 12px;padding-top:18px;border-top:1px solid var(--line);font-size:22px}p{margin:0 0 14px}a{color:var(--accent);text-underline-offset:3px}code{background:var(--soft);border-radius:5px;padding:1px 5px}pre{overflow:auto;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:14px}table{width:100%;border-collapse:collapse;margin:14px 0}th,td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:left;vertical-align:top}th{color:var(--muted);font-size:12px;text-transform:uppercase}.meta{color:var(--muted);font-size:14px}.callout{border-left:4px solid var(--accent);background:var(--soft);padding:15px 17px;margin:18px 0}.note{border-left-color:#b68b00;background:var(--note)}details{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:10px 0;background:white}summary{cursor:pointer;font-weight:700}li{margin:7px 0}
+</style></head><body><main>
+<header><h1>0012 Infrastructure as Code 与 Terraform</h1><p class="meta">Q3 Cloud + DevOps | 预计 40 分钟 | <a href="../lectures/index.html?trace=lecture_12">lecture trace</a></p><p>IaC 的价值是让基础设施可以 review、复现和回滚，而不是在控制台里靠记忆点点点。</p></header>
+<section><h2>Terraform 流程</h2><pre><code>terraform init
+terraform fmt
+terraform validate
+terraform plan
+terraform apply</code></pre></section>
+<section><h2>核心对象</h2><table><thead><tr><th>对象</th><th>含义</th></tr></thead><tbody><tr><td>provider</td><td>连接云平台 API。</td></tr><tr><td>resource</td><td>声明要管理的真实资源。</td></tr><tr><td>data source</td><td>读取已有资源或外部信息。</td></tr><tr><td>state</td><td>记录代码和真实资源映射。</td></tr><tr><td>module</td><td>可复用基础设施组件。</td></tr></tbody></table></section>
+<section><h2>练习</h2><ol><li>写一个 S3 bucket 的 Terraform 草稿。</li><li>说明 <code>plan</code> 输出应该如何 review。</li><li>解释 state 为什么不能随便丢或公开。</li><li>把 dev 和 prod 的变量分开。</li></ol><div class="callout note">交付物：一份 Terraform 计划说明。</div></section>
+<section><h2>自测</h2><details><summary>Terraform state 记录什么？</summary><p>记录 Terraform 配置资源和真实云资源之间的映射及属性。</p></details><details><summary>为什么 apply 前要看 plan？</summary><p>plan 是变更预览，可以避免误删、误改和权限扩大。</p></details><details><summary>module 什么时候值得抽？</summary><p>当一组资源有稳定边界并会被多处复用时。</p></details></section>
+<section><h2>主资料</h2><p><a href="https://developer.hashicorp.com/terraform/docs">Terraform Docs</a>。速查见 <a href="../reference/0007-cloud-devops-cheatsheet.html">Cloud + DevOps 速查</a>。</p></section>
+</main></body></html>

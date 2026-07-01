@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Full-Stack Roadmap 2026 全年学习地图</title>
+  <style>
+    :root { --ink:#17212b; --muted:#5d6875; --line:#dce3ea; --soft:#f6f8fa; --accent:#0f766e; --paper:#fffdf8; }
+    * { box-sizing: border-box; }
+    body { margin:0; color:var(--ink); background:var(--paper); font:16px/1.62 ui-serif, Georgia, "Noto Serif CJK SC", serif; }
+    main { max-width:1100px; margin:0 auto; padding:46px 24px 76px; }
+    h1,h2,h3,th,.meta,.pill { font-family:ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing:0; }
+    h1 { margin:0 0 8px; font-size:34px; line-height:1.12; }
+    h2 { margin:34px 0 12px; padding-top:18px; border-top:1px solid var(--line); font-size:22px; }
+    p { max-width:76ch; margin:0 0 13px; }
+    a { color:var(--accent); text-underline-offset:3px; }
+    table { width:100%; border-collapse:collapse; margin:16px 0 24px; background:white; }
+    th,td { border:1px solid var(--line); padding:10px; vertical-align:top; text-align:left; }
+    th { color:var(--muted); font-size:12px; text-transform:uppercase; }
+    ul { margin:8px 0 0; padding-left:20px; }
+    li { margin:5px 0; }
+    .meta { color:var(--muted); font-size:14px; }
+    .callout { border-left:4px solid var(--accent); background:var(--soft); padding:15px 17px; margin:18px 0; }
+    .pill { display:inline-block; margin:3px 4px 3px 0; padding:2px 8px; border:1px solid var(--line); border-radius:999px; background:white; color:var(--muted); font-size:12px; }
+    @media print { body { background:white; } main { padding:20px; } a { color:inherit; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Full-Stack Roadmap 2026 全年学习地图</h1>
+  <p class="meta">参考图片目录扩展 | 52 周路线 | 配套 16 节短课</p>
+  <p>这张地图用于决定“下一步学什么”。每天学技术时问三个问题：我在构建哪个可运行产物？它连接到哪一个季度目标？我能用什么证据证明自己掌握了？</p>
+
+  <section>
+    <h2>全年节奏</h2>
+    <table>
+      <thead><tr><th>季度</th><th>主题</th><th>核心能力</th><th>季度项目验收</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Q1</td>
+          <td>Frontend Fundamentals</td>
+          <td>HTML/CSS/JS、Flex/Grid、响应式、可访问性、React + TypeScript、Git</td>
+          <td>一个响应式 React 应用，含表单、API mock、测试、Git 提交历史。</td>
+        </tr>
+        <tr>
+          <td>Q2</td>
+          <td>Backend Fundamentals</td>
+          <td>Node 或 Python、HTTP API、CRUD、SQL、数据库关系、认证授权</td>
+          <td>一个带登录、数据库、CRUD 和 API 文档的后端服务。</td>
+        </tr>
+        <tr>
+          <td>Q3</td>
+          <td>Cloud + DevOps</td>
+          <td>AWS S3/CloudFront/API Gateway/Lambda、Terraform、CI/CD、日志指标告警</td>
+          <td>云上可访问的全栈项目，基础设施可重建，部署自动化，故障可定位。</td>
+        </tr>
+        <tr>
+          <td>Q4</td>
+          <td>Systems, Projects, Interviews</td>
+          <td>系统设计、安全加固、Demo、作品集、简历、面试表达</td>
+          <td>2-3 个可展示项目，含架构说明、Demo 视频、简历 bullet 和面试故事。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>52 周拆解</h2>
+    <table>
+      <thead><tr><th>周</th><th>主题</th><th>学习产物</th><th>主课</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Web 工作原理</td><td>画出 URL 到页面渲染的流程图。</td><td><a href="../lessons/0001-how-the-web-works.html">0001</a></td></tr>
+        <tr><td>2</td><td>HTML 语义结构</td><td>写一页语义化个人介绍页面。</td><td><a href="../lessons/0002-html-css-js-foundations.html">0002</a></td></tr>
+        <tr><td>3</td><td>CSS 盒模型与层叠</td><td>复刻一个文章详情页。</td><td>0002</td></tr>
+        <tr><td>4</td><td>JavaScript DOM 与事件</td><td>做一个待办清单，无框架。</td><td>0002</td></tr>
+        <tr><td>5</td><td>Flex 和 Grid</td><td>完成导航栏、卡片列表、仪表盘布局。</td><td><a href="../lessons/0003-layout-responsive-accessibility.html">0003</a></td></tr>
+        <tr><td>6</td><td>响应式布局</td><td>移动端、平板、桌面三档布局。</td><td>0003</td></tr>
+        <tr><td>7</td><td>可访问性基础</td><td>键盘可用的表单和错误提示。</td><td>0003</td></tr>
+        <tr><td>8</td><td>React 组件</td><td>把静态 UI 拆成组件树。</td><td><a href="../lessons/0004-react-typescript-components.html">0004</a></td></tr>
+        <tr><td>9</td><td>Props、state、事件</td><td>做一个可过滤、可编辑列表。</td><td>0004</td></tr>
+        <tr><td>10</td><td>TypeScript 类型边界</td><td>为组件 props、API 数据、表单状态建模。</td><td>0004</td></tr>
+        <tr><td>11</td><td>表单与数据获取</td><td>提交表单、处理 loading/error/success。</td><td><a href="../lessons/0005-react-state-forms-query-tests.html">0005</a></td></tr>
+        <tr><td>12</td><td>前端测试</td><td>给关键交互写 Vitest 测试。</td><td>0005</td></tr>
+        <tr><td>13</td><td>Git 工作流</td><td>为 Q1 项目整理清晰提交历史。</td><td><a href="../lessons/0006-git-branching-commits.html">0006</a></td></tr>
+        <tr><td>14</td><td>后端运行时</td><td>搭一个最小 Node 或 Python HTTP 服务。</td><td><a href="../lessons/0007-backend-runtime-http-api.html">0007</a></td></tr>
+        <tr><td>15</td><td>路由与中间件</td><td>实现健康检查、错误处理、日志中间件。</td><td>0007</td></tr>
+        <tr><td>16</td><td>API 资源建模</td><td>把项目实体映射为 REST 资源。</td><td><a href="../lessons/0008-crud-api-design.html">0008</a></td></tr>
+        <tr><td>17</td><td>CRUD 合约</td><td>实现 create/read/update/delete 和验证。</td><td>0008</td></tr>
+        <tr><td>18</td><td>状态码、分页、幂等</td><td>补齐 API 边界行为。</td><td>0008</td></tr>
+        <tr><td>19</td><td>SQL 基础</td><td>设计 3-5 张表并写基础查询。</td><td><a href="../lessons/0009-sql-database-modeling.html">0009</a></td></tr>
+        <tr><td>20</td><td>关系和 join</td><td>用外键和 join 查询跨表数据。</td><td>0009</td></tr>
+        <tr><td>21</td><td>索引和事务</td><td>解释一个慢查询如何被索引改善。</td><td>0009</td></tr>
+        <tr><td>22</td><td>Session 与 cookie</td><td>实现登录、登出、会话校验。</td><td><a href="../lessons/0010-auth-sessions-jwt-oauth.html">0010</a></td></tr>
+        <tr><td>23</td><td>JWT 与权限</td><td>实现访问 token 验证和角色权限。</td><td>0010</td></tr>
+        <tr><td>24</td><td>OAuth 基础</td><td>画出授权码流程。</td><td>0010</td></tr>
+        <tr><td>25</td><td>后端项目整合</td><td>Q2 项目接入真实数据库和认证。</td><td>0007-0010</td></tr>
+        <tr><td>26</td><td>AWS 基础和 IAM</td><td>解释账号、region、resource、permission。</td><td><a href="../lessons/0011-cloud-building-blocks.html">0011</a></td></tr>
+        <tr><td>27</td><td>S3 和 CloudFront</td><td>发布静态前端资源。</td><td>0011</td></tr>
+        <tr><td>28</td><td>Lambda 和 API Gateway</td><td>发布一个 serverless API。</td><td>0011</td></tr>
+        <tr><td>29</td><td>Terraform 基础</td><td>用代码创建一个 S3 bucket。</td><td><a href="../lessons/0012-infrastructure-as-code-terraform.html">0012</a></td></tr>
+        <tr><td>30</td><td>Terraform state 和 module</td><td>拆分环境配置。</td><td>0012</td></tr>
+        <tr><td>31</td><td>CI</td><td>push 后自动跑 lint/test/build。</td><td><a href="../lessons/0013-ci-cd-pipelines.html">0013</a></td></tr>
+        <tr><td>32</td><td>CD</td><td>main 分支自动部署到 staging。</td><td>0013</td></tr>
+        <tr><td>33</td><td>日志和指标</td><td>为 API 增加 request log 和 error metric。</td><td><a href="../lessons/0014-observability-logs-metrics-alerts.html">0014</a></td></tr>
+        <tr><td>34</td><td>告警和仪表盘</td><td>为 5xx、延迟、错误率建立告警。</td><td>0014</td></tr>
+        <tr><td>35</td><td>云上整合</td><td>Q3 全栈项目可重建、可部署、可观测。</td><td>0011-0014</td></tr>
+        <tr><td>36</td><td>系统设计框架</td><td>用固定结构回答一个设计题。</td><td><a href="../lessons/0015-system-design.html">0015</a></td></tr>
+        <tr><td>37</td><td>容量估算</td><td>估算 QPS、存储、带宽和峰值。</td><td>0015</td></tr>
+        <tr><td>38</td><td>缓存和队列</td><td>说明何时引入缓存或异步队列。</td><td>0015</td></tr>
+        <tr><td>39</td><td>可靠性和一致性</td><td>解释重试、幂等、降级和数据一致性。</td><td>0015</td></tr>
+        <tr><td>40</td><td>安全加固</td><td>用 OWASP Top Ten 检查项目。</td><td>0010, 0015</td></tr>
+        <tr><td>41</td><td>项目整理</td><td>给每个项目补 README、截图、架构图。</td><td><a href="../lessons/0016-projects-portfolio-interviews.html">0016</a></td></tr>
+        <tr><td>42</td><td>Demo 录制</td><td>录 2 分钟项目演示。</td><td>0016</td></tr>
+        <tr><td>43</td><td>作品集网站</td><td>上线 portfolio。</td><td>0016</td></tr>
+        <tr><td>44</td><td>简历 bullet</td><td>把项目改写为影响、技术、结果。</td><td>0016</td></tr>
+        <tr><td>45-48</td><td>面试训练</td><td>前端、后端、系统设计、项目深挖各 1 轮。</td><td>0015-0016</td></tr>
+        <tr><td>49-52</td><td>复盘和补短板</td><td>修复项目技术债，完成最后展示。</td><td>全部</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>掌握标准</h2>
+    <div class="callout">
+      <p><strong>会了</strong> 的定义不是“看懂”。你需要能从空目录开始实现、解释取舍、定位故障、写测试、部署上线，并能把过程讲给别人听。</p>
+      <p>
+        <span class="pill">可运行</span>
+        <span class="pill">可测试</span>
+        <span class="pill">可部署</span>
+        <span class="pill">可观测</span>
+        <span class="pill">可解释</span>
+      </p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

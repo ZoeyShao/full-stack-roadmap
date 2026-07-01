@@ -1,0 +1,106 @@
+{
+  "files": {
+    "edtrace_lectures/lecture_06.py": "from .course import render\n\n\ndef main() -> None:\n    render(\"lecture_06\")\n"
+  },
+  "hidden_line_numbers": {
+    "edtrace_lectures/lecture_06.py": []
+  },
+  "steps": [
+    {
+      "stack": [
+        {
+          "path": "edtrace_lectures/lecture_06.py",
+          "line_number": 4,
+          "function_name": "main",
+          "code": "def main() -> None:"
+        }
+      ],
+      "env": {},
+      "renderings": []
+    },
+    {
+      "stack": [
+        {
+          "path": "edtrace_lectures/lecture_06.py",
+          "line_number": 5,
+          "function_name": "main",
+          "code": "render(\"lecture_06\")"
+        }
+      ],
+      "env": {},
+      "renderings": [
+        {
+          "type": "markdown",
+          "data": "# Git \u5206\u652f\u3001\u63d0\u4ea4\u548c\u534f\u4f5c\n\nQ1 Frontend Fundamentals",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "**\u672c\u8bb2\u4f7f\u547d\uff1a** \u8ba9\u53d8\u66f4\u5386\u53f2\u53ef\u7406\u89e3\u3001\u53ef\u56de\u9000\u3001\u53ef review\u3002",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "note",
+          "data": "\u5148\u5c1d\u8bd5\u4ece\u8bb0\u5fc6\u89e3\u91ca\u672c\u8bb2\u6982\u5ff5\uff0c\u518d\u6253\u5f00\u77ed\u8bfe\u548c\u5b98\u65b9\u8d44\u6599\u3002\u8fd9\u6837\u4f1a\u6bd4\u76f4\u63a5\u9605\u8bfb\u66f4\u80fd\u5efa\u7acb\u957f\u671f\u8bb0\u5fc6\u3002",
+          "style": null,
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u5b66\u4e60\u8def\u5f84\n\n- \u4e3a\u4e00\u4e2a\u529f\u80fd\u5efa\u7acb\u72ec\u7acb branch\u3002\n- \u628a\u4fee\u6539\u62c6\u6210\u6709\u610f\u4e49\u7684 commit\u3002\n- \u7528 merge \u6216 rebase \u6574\u7406\u5386\u53f2\u3002\n- \u5728 PR \u63cf\u8ff0\u4e2d\u8bf4\u660e\u76ee\u7684\u3001\u53d8\u66f4\u548c\u9a8c\u8bc1\u3002",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u4ea4\u4ed8\u7269\n\n\u4e00\u6bb5\u53ef review \u7684 Git \u63d0\u4ea4\u5386\u53f2\u3002",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u914d\u5957\u6750\u6599\n\n- \u77ed\u8bfe\uff1a`lessons/0006-git-branching-commits.html`\n- \u901f\u67e5\uff1a`reference/0001-roadmap-master-plan.html`",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u4e3b\u8d44\u6599",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "link",
+          "data": "[Pro Git Book]",
+          "style": {},
+          "external_link": {
+            "title": "Pro Git Book",
+            "authors": null,
+            "organization": null,
+            "date": null,
+            "url": "https://git-scm.com/book/en/v2",
+            "description": null,
+            "notes": null
+          },
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u8bfe\u540e\u56de\u5fc6\n\n1. \u4e0d\u770b\u7b14\u8bb0\uff0c\u8bf4\u51fa\u672c\u8bb2\u6700\u91cd\u8981\u7684\u4e09\u4e2a\u6982\u5ff5\u3002\n2. \u89e3\u91ca\u672c\u8bb2\u4ea4\u4ed8\u7269\u4e3a\u4ec0\u4e48\u80fd\u8bc1\u660e\u4f60\u5b66\u4f1a\u4e86\u3002\n3. \u628a\u4e0d\u786e\u5b9a\u7684\u95ee\u9898\u8bb0\u4e0b\u6765\uff0c\u4e0b\u4e00\u8f6e\u95ee agent\u3002",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        }
+      ]
+    }
+  ]
+}

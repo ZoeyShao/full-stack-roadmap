@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>后端、API 与数据库速查</title>
+  <style>
+    :root { --ink:#17212b; --muted:#5d6875; --line:#dce3ea; --soft:#f6f8fa; --accent:#0f766e; }
+    body { margin:0; color:var(--ink); background:white; font:16px/1.62 ui-serif, Georgia, "Noto Serif CJK SC", serif; }
+    main { max-width:1060px; margin:0 auto; padding:46px 24px 76px; }
+    h1,h2,h3,th,.meta,code { font-family:ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing:0; }
+    h1 { margin:0 0 8px; font-size:34px; }
+    h2 { margin:34px 0 12px; padding-top:18px; border-top:1px solid var(--line); }
+    table { width:100%; border-collapse:collapse; margin:14px 0 24px; }
+    th,td { border-bottom:1px solid var(--line); padding:10px 8px; text-align:left; vertical-align:top; }
+    th { color:var(--muted); font-size:12px; text-transform:uppercase; }
+    code,pre { background:var(--soft); border-radius:6px; }
+    code { padding:1px 5px; }
+    pre { overflow:auto; padding:14px; border:1px solid var(--line); }
+    .meta { color:var(--muted); font-size:14px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>后端、API 与数据库速查</h1>
+  <p class="meta">配套课程 0007-0009 | 参考 Node.js、Python、MDN HTTP、GraphQL、PostgreSQL</p>
+
+  <section>
+    <h2>HTTP API 请求处理链</h2>
+    <pre><code>client request
+  -> load balancer / gateway
+  -> route match
+  -> authentication
+  -> validation
+  -> business logic
+  -> database
+  -> response mapping
+  -> logs / metrics</code></pre>
+    <p>后端不是“写几个接口”，而是把输入、权限、业务规则、数据一致性和可观测性放在一个稳定边界里。</p>
+  </section>
+
+  <section>
+    <h2>REST 方法和状态码</h2>
+    <table>
+      <thead><tr><th>动作</th><th>方法</th><th>路径示例</th><th>常见状态码</th></tr></thead>
+      <tbody>
+        <tr><td>列表</td><td>GET</td><td><code>/projects</code></td><td>200</td></tr>
+        <tr><td>详情</td><td>GET</td><td><code>/projects/:id</code></td><td>200, 404</td></tr>
+        <tr><td>创建</td><td>POST</td><td><code>/projects</code></td><td>201, 400, 409</td></tr>
+        <tr><td>整体替换</td><td>PUT</td><td><code>/projects/:id</code></td><td>200, 204, 404</td></tr>
+        <tr><td>部分更新</td><td>PATCH</td><td><code>/projects/:id</code></td><td>200, 204, 400, 404</td></tr>
+        <tr><td>删除</td><td>DELETE</td><td><code>/projects/:id</code></td><td>204, 404</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>API 设计检查清单</h2>
+    <table>
+      <thead><tr><th>检查项</th><th>问题</th></tr></thead>
+      <tbody>
+        <tr><td>资源</td><td>URL 表示名词资源，还是把动词塞进路径了？</td></tr>
+        <tr><td>验证</td><td>缺字段、格式错、越权字段如何返回？</td></tr>
+        <tr><td>错误</td><td>错误响应是否有稳定结构和可读 message？</td></tr>
+        <tr><td>分页</td><td>列表是否限制 limit，是否支持 cursor 或 page？</td></tr>
+        <tr><td>幂等</td><td>重复请求是否会导致重复创建或重复扣费？</td></tr>
+        <tr><td>版本</td><td>未来 breaking change 如何处理？</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>关系型数据库建模</h2>
+    <pre><code>users
+  id primary key
+  email unique not null
+  created_at timestamp
+
+projects
+  id primary key
+  owner_id foreign key -> users.id
+  title not null
+  status check ("draft", "active", "archived")
+
+tasks
+  id primary key
+  project_id foreign key -> projects.id
+  title not null
+  completed_at nullable timestamp</code></pre>
+    <p>先找实体，再找关系，再找约束。数据库约束不是麻烦，它是系统底线。</p>
+  </section>
+
+  <section>
+    <h2>SQL 查询模板</h2>
+    <pre><code>SELECT p.id, p.title, count(t.id) AS task_count
+FROM projects p
+LEFT JOIN tasks t ON t.project_id = p.id
+WHERE p.owner_id = $1
+GROUP BY p.id, p.title
+ORDER BY p.created_at DESC
+LIMIT 20;</code></pre>
+    <table>
+      <thead><tr><th>语句</th><th>作用</th></tr></thead>
+      <tbody>
+        <tr><td><code>WHERE</code></td><td>过滤行，尽早减少数据。</td></tr>
+        <tr><td><code>JOIN</code></td><td>按关系合并表。</td></tr>
+        <tr><td><code>GROUP BY</code></td><td>按维度聚合。</td></tr>
+        <tr><td><code>ORDER BY</code></td><td>排序，常与索引和 limit 相关。</td></tr>
+        <tr><td><code>LIMIT</code></td><td>限制返回数量，避免列表无界。</td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>

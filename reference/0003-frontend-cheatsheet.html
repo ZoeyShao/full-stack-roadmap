@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>前端基础速查</title>
+  <style>
+    :root { --ink:#17212b; --muted:#5d6875; --line:#dce3ea; --soft:#f6f8fa; --accent:#0f766e; }
+    body { margin:0; color:var(--ink); background:white; font:16px/1.62 ui-serif, Georgia, "Noto Serif CJK SC", serif; }
+    main { max-width:1020px; margin:0 auto; padding:46px 24px 76px; }
+    h1,h2,h3,th,.meta,code { font-family:ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing:0; }
+    h1 { margin:0 0 8px; font-size:34px; }
+    h2 { margin:34px 0 12px; padding-top:18px; border-top:1px solid var(--line); }
+    table { width:100%; border-collapse:collapse; margin:14px 0 24px; }
+    th,td { border-bottom:1px solid var(--line); padding:10px 8px; text-align:left; vertical-align:top; }
+    th { color:var(--muted); font-size:12px; text-transform:uppercase; }
+    code,pre { background:var(--soft); border-radius:6px; }
+    code { padding:1px 5px; }
+    pre { overflow:auto; padding:14px; border:1px solid var(--line); }
+    .meta { color:var(--muted); font-size:14px; }
+    a { color:var(--accent); text-underline-offset:3px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>前端基础速查</h1>
+  <p class="meta">配套课程 0001-0003 | 参考 MDN 与 W3C WAI</p>
+
+  <section>
+    <h2>HTML 先问语义</h2>
+    <table>
+      <thead><tr><th>需求</th><th>优先元素</th><th>原因</th></tr></thead>
+      <tbody>
+        <tr><td>页面主标题</td><td><code>&lt;h1&gt;</code></td><td>表达文档结构，不是只把字变大。</td></tr>
+        <tr><td>导航</td><td><code>&lt;nav&gt;</code> + <code>&lt;a&gt;</code></td><td>可被浏览器、搜索引擎和辅助技术识别。</td></tr>
+        <tr><td>主要内容</td><td><code>&lt;main&gt;</code></td><td>每页通常一个主内容区。</td></tr>
+        <tr><td>表单输入</td><td><code>&lt;label&gt;</code> + <code>&lt;input&gt;</code></td><td>点击 label 能聚焦输入框，读屏能读出字段含义。</td></tr>
+        <tr><td>按钮动作</td><td><code>&lt;button&gt;</code></td><td>天然支持键盘、焦点和点击语义。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>CSS 布局决策</h2>
+    <table>
+      <thead><tr><th>问题</th><th>首选工具</th><th>判断规则</th></tr></thead>
+      <tbody>
+        <tr><td>一行按钮如何分布</td><td>Flexbox</td><td>沿一个轴对齐、分布、换行。</td></tr>
+        <tr><td>页面整体左右栏</td><td>Grid</td><td>同时关心行和列，使用明确轨道。</td></tr>
+        <tr><td>内容随容器变宽</td><td><code>max-width</code> + <code>width</code></td><td>先限制阅读宽度，再居中。</td></tr>
+        <tr><td>移动端布局</td><td>Mobile-first media query</td><td>默认小屏，再逐步增强大屏。</td></tr>
+      </tbody>
+    </table>
+    <pre><code>.page {
+  width: min(100% - 32px, 960px);
+  margin-inline: auto;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}</code></pre>
+  </section>
+
+  <section>
+    <h2>JavaScript 最小交互</h2>
+    <pre><code>const form = document.querySelector("[data-form]");
+const output = document.querySelector("[data-output]");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const data = new FormData(form);
+  output.textContent = `你好，${data.get("name")}`;
+});</code></pre>
+    <p>能解释这段代码，就已经连通了 DOM 查询、事件监听、默认行为、表单数据和页面更新。</p>
+  </section>
+
+  <section>
+    <h2>可访问性底线</h2>
+    <table>
+      <thead><tr><th>检查项</th><th>合格标准</th></tr></thead>
+      <tbody>
+        <tr><td>键盘</td><td>Tab 能到达所有可操作控件，Enter/Space 能触发按钮。</td></tr>
+        <tr><td>标签</td><td>每个输入都有可见 label 或清晰的 accessible name。</td></tr>
+        <tr><td>错误</td><td>错误信息要靠文字说明，不只靠红色。</td></tr>
+        <tr><td>图片</td><td>信息图片写 alt，装饰图片空 alt。</td></tr>
+        <tr><td>对比度</td><td>正文和背景有足够对比，焦点状态清楚。</td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>

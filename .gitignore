@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.pyc
+.edtrace-viewer/
+.edtrace-viewer.log
+.edtrace-viewer.pid
+.trace-static-server.log
+.trace-static-server.pid

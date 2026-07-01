@@ -1,0 +1,106 @@
+{
+  "files": {
+    "edtrace_lectures/lecture_10.py": "from .course import render\n\n\ndef main() -> None:\n    render(\"lecture_10\")\n"
+  },
+  "hidden_line_numbers": {
+    "edtrace_lectures/lecture_10.py": []
+  },
+  "steps": [
+    {
+      "stack": [
+        {
+          "path": "edtrace_lectures/lecture_10.py",
+          "line_number": 4,
+          "function_name": "main",
+          "code": "def main() -> None:"
+        }
+      ],
+      "env": {},
+      "renderings": []
+    },
+    {
+      "stack": [
+        {
+          "path": "edtrace_lectures/lecture_10.py",
+          "line_number": 5,
+          "function_name": "main",
+          "code": "render(\"lecture_10\")"
+        }
+      ],
+      "env": {},
+      "renderings": [
+        {
+          "type": "markdown",
+          "data": "# \u8ba4\u8bc1\u3001Session\u3001JWT \u4e0e OAuth\n\nQ2 Backend Fundamentals",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "**\u672c\u8bb2\u4f7f\u547d\uff1a** \u5206\u6e05\u8ba4\u8bc1\u3001\u6388\u6743\u548c\u4f1a\u8bdd\uff0c\u5e76\u77e5\u9053\u5e38\u89c1\u5b89\u5168\u98ce\u9669\u3002",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "note",
+          "data": "\u5148\u5c1d\u8bd5\u4ece\u8bb0\u5fc6\u89e3\u91ca\u672c\u8bb2\u6982\u5ff5\uff0c\u518d\u6253\u5f00\u77ed\u8bfe\u548c\u5b98\u65b9\u8d44\u6599\u3002\u8fd9\u6837\u4f1a\u6bd4\u76f4\u63a5\u9605\u8bfb\u66f4\u80fd\u5efa\u7acb\u957f\u671f\u8bb0\u5fc6\u3002",
+          "style": null,
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u5b66\u4e60\u8def\u5f84\n\n- \u8ba4\u8bc1\u56de\u7b54\u4f60\u662f\u8c01\u3002\n- \u6388\u6743\u56de\u7b54\u4f60\u80fd\u505a\u4ec0\u4e48\u3002\n- Session \u66f4\u9002\u5408\u540c\u57df\u4f20\u7edf Web\u3002\n- JWT \u662f\u7b7e\u540d claims\uff0c\u4e0d\u662f\u52a0\u5bc6\u5b58\u50a8\u3002\n- OAuth \u7528\u4e8e\u6388\u6743\u7b2c\u4e09\u65b9\u8bbf\u95ee\u8d44\u6e90\u3002",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u4ea4\u4ed8\u7269\n\n\u4e00\u4efd\u8ba4\u8bc1\u6388\u6743\u6d41\u7a0b\u56fe\u548c\u5b89\u5168\u68c0\u67e5\u6e05\u5355\u3002",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u914d\u5957\u6750\u6599\n\n- \u77ed\u8bfe\uff1a`lessons/0010-auth-sessions-jwt-oauth.html`\n- \u901f\u67e5\uff1a`reference/0006-auth-security-cheatsheet.html`",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u4e3b\u8d44\u6599",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "link",
+          "data": "[RFC 7519 JSON Web Token]",
+          "style": {},
+          "external_link": {
+            "title": "RFC 7519 JSON Web Token",
+            "authors": null,
+            "organization": null,
+            "date": null,
+            "url": "https://datatracker.ietf.org/doc/html/rfc7519",
+            "description": null,
+            "notes": null
+          },
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u8bfe\u540e\u56de\u5fc6\n\n1. \u4e0d\u770b\u7b14\u8bb0\uff0c\u8bf4\u51fa\u672c\u8bb2\u6700\u91cd\u8981\u7684\u4e09\u4e2a\u6982\u5ff5\u3002\n2. \u89e3\u91ca\u672c\u8bb2\u4ea4\u4ed8\u7269\u4e3a\u4ec0\u4e48\u80fd\u8bc1\u660e\u4f60\u5b66\u4f1a\u4e86\u3002\n3. \u628a\u4e0d\u786e\u5b9a\u7684\u95ee\u9898\u8bb0\u4e0b\u6765\uff0c\u4e0b\u4e00\u8f6e\u95ee agent\u3002",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cloud + DevOps 速查</title>
+  <style>
+    :root { --ink:#17212b; --muted:#5d6875; --line:#dce3ea; --soft:#f6f8fa; --accent:#0f766e; }
+    body { margin:0; color:var(--ink); background:white; font:16px/1.62 ui-serif, Georgia, "Noto Serif CJK SC", serif; }
+    main { max-width:1060px; margin:0 auto; padding:46px 24px 76px; }
+    h1,h2,h3,th,.meta,code { font-family:ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing:0; }
+    h1 { margin:0 0 8px; font-size:34px; }
+    h2 { margin:34px 0 12px; padding-top:18px; border-top:1px solid var(--line); }
+    table { width:100%; border-collapse:collapse; margin:14px 0 24px; }
+    th,td { border-bottom:1px solid var(--line); padding:10px 8px; text-align:left; vertical-align:top; }
+    th { color:var(--muted); font-size:12px; text-transform:uppercase; }
+    code,pre { background:var(--soft); border-radius:6px; }
+    code { padding:1px 5px; }
+    pre { overflow:auto; padding:14px; border:1px solid var(--line); }
+    .meta { color:var(--muted); font-size:14px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Cloud + DevOps 速查</h1>
+  <p class="meta">配套课程 0011-0014 | 参考 AWS、Terraform、GitHub Actions、Google SRE</p>
+
+  <section>
+    <h2>AWS 积木</h2>
+    <table>
+      <thead><tr><th>服务</th><th>一句话</th><th>项目中怎么用</th><th>常见坑</th></tr></thead>
+      <tbody>
+        <tr><td>S3</td><td>对象存储</td><td>存静态文件、上传文件、备份。</td><td>公开权限、bucket policy、缓存头。</td></tr>
+        <tr><td>CloudFront</td><td>CDN 分发</td><td>前端静态资源、图片、API 缓存。</td><td>缓存失效、origin 权限、HTTPS 证书。</td></tr>
+        <tr><td>Lambda</td><td>事件驱动函数</td><td>小型 API、队列消费者、定时任务。</td><td>冷启动、超时、权限、日志。</td></tr>
+        <tr><td>API Gateway</td><td>API 入口</td><td>HTTP 路由到 Lambda 或后端。</td><td>CORS、认证、限流、错误映射。</td></tr>
+        <tr><td>CloudWatch</td><td>观测平台</td><td>日志、指标、告警、仪表盘。</td><td>日志成本、告警噪音、缺少结构化字段。</td></tr>
+        <tr><td>IAM</td><td>身份和权限</td><td>控制服务和用户能访问什么。</td><td>权限过宽、长期密钥、角色信任关系。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Terraform 心智模型</h2>
+    <pre><code>write .tf files
+  -> terraform init
+  -> terraform plan
+  -> review diff
+  -> terraform apply
+  -> state records real resources</code></pre>
+    <table>
+      <thead><tr><th>对象</th><th>含义</th></tr></thead>
+      <tbody>
+        <tr><td>provider</td><td>Terraform 和云平台 API 的适配器，如 AWS provider。</td></tr>
+        <tr><td>resource</td><td>要创建和管理的真实资源，如 S3 bucket。</td></tr>
+        <tr><td>data source</td><td>读取已有资源或外部信息，不直接创建。</td></tr>
+        <tr><td>state</td><td>代码资源和真实资源的映射，必须保护。</td></tr>
+        <tr><td>module</td><td>可复用基础设施组件。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>CI/CD 最小流水线</h2>
+    <pre><code>on pull request:
+  install
+  lint
+  typecheck
+  test
+  build
+
+on merge to main:
+  install
+  test
+  build
+  deploy staging
+  smoke test</code></pre>
+    <p>流水线的目的不是仪式感，而是把“我机器上能跑”变成“每次改动都可验证”。</p>
+  </section>
+
+  <section>
+    <h2>观测性三件套</h2>
+    <table>
+      <thead><tr><th>信号</th><th>回答</th><th>例子</th></tr></thead>
+      <tbody>
+        <tr><td>Logs</td><td>某次请求发生了什么？</td><td>request id、user id、route、status、error。</td></tr>
+        <tr><td>Metrics</td><td>整体趋势如何？</td><td>QPS、p95 latency、5xx rate、queue depth。</td></tr>
+        <tr><td>Traces</td><td>一次请求跨服务花在哪里？</td><td>frontend -> API -> DB -> third-party。</td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>

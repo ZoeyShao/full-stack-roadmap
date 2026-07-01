@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Full-Stack Roadmap 2026 课程目录</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #5d6875;
+      --line: #dce3ea;
+      --paper: #fbfaf7;
+      --accent: #0f766e;
+      --soft: #eef7f4;
+      --gold: #9a6a10;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font: 17px/1.65 ui-serif, Georgia, "Noto Serif CJK SC", "Source Han Serif SC", serif;
+    }
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    h1, h2, h3, .meta, .tag, a.lesson {
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+    h1 { margin: 0 0 8px; font-size: 36px; line-height: 1.12; }
+    h2 { margin: 34px 0 12px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 22px; }
+    p { max-width: 74ch; margin: 0 0 14px; }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    .meta { color: var(--muted); font-size: 14px; }
+    .hero {
+      border: 1px solid var(--line);
+      background: white;
+      padding: 22px;
+      margin: 24px 0;
+      border-radius: 8px;
+    }
+    .quarters {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .quarter {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      padding: 14px;
+    }
+    .quarter strong {
+      display: block;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      margin-bottom: 6px;
+    }
+    .tag {
+      display: inline-block;
+      margin: 4px 4px 0 0;
+      padding: 2px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: #fff;
+      font-size: 12px;
+    }
+    ol { margin: 0; padding: 0; list-style: none; }
+    li {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      align-items: start;
+      border-top: 1px solid var(--line);
+      padding: 14px 0;
+    }
+    li:first-child { border-top: 0; }
+    .num {
+      color: var(--gold);
+      font: 700 13px/1.4 ui-sans-serif, system-ui, sans-serif;
+    }
+    a.lesson {
+      font-weight: 700;
+      text-decoration-thickness: 1px;
+    }
+    .desc { color: var(--muted); margin: 4px 0 0; font-size: 15px; }
+    @media (max-width: 820px) {
+      main { padding: 32px 18px 64px; }
+      h1 { font-size: 30px; }
+      .quarters { grid-template-columns: 1fr 1fr; }
+      li { grid-template-columns: 1fr; gap: 4px; }
+    }
+    @media (max-width: 520px) {
+      .quarters { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Full-Stack Roadmap 2026 课程目录</h1>
+    <p class="meta">从图片路线图扩展而来 | 16 节核心短课 | 每节 20-40 分钟 | 中文讲解，英文术语</p>
+  </header>
+
+  <section class="hero">
+    <p>
+      这不是一张“要学很多东西”的清单，而是一条能交付项目的路径。你会从浏览器里的 HTML/CSS/JS 开始，
+      逐步走到 React、API、数据库、认证、云部署、CI/CD、监控、系统设计和作品集。
+    </p>
+    <p>
+      先从 <a href="../lectures/index.html?trace=lecture_01">Lecture Trace 入口</a> 开始，再看 <a href="../reference/0001-roadmap-master-plan.html">全年学习地图</a>，
+      再把 <a href="../reference/0002-glossary.html">术语表</a> 放在旁边。每节课都有练习和回忆题。
+    </p>
+  </section>
+
+  <section>
+    <h2>季度地图</h2>
+    <div class="quarters">
+      <div class="quarter">
+        <strong>Q1 前端基础</strong>
+        <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span><span class="tag">React</span><span class="tag">TS</span><span class="tag">Git</span>
+      </div>
+      <div class="quarter">
+        <strong>Q2 后端基础</strong>
+        <span class="tag">HTTP</span><span class="tag">API</span><span class="tag">CRUD</span><span class="tag">SQL</span><span class="tag">Auth</span>
+      </div>
+      <div class="quarter">
+        <strong>Q3 Cloud + DevOps</strong>
+        <span class="tag">AWS</span><span class="tag">Terraform</span><span class="tag">CI/CD</span><span class="tag">Logs</span><span class="tag">Alerts</span>
+      </div>
+      <div class="quarter">
+        <strong>Q4 项目与面试</strong>
+        <span class="tag">System Design</span><span class="tag">Security</span><span class="tag">Portfolio</span><span class="tag">Interview</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>16 节核心课</h2>
+    <ol>
+      <li><span class="num">0001</span><div><a class="lesson" href="0001-how-the-web-works.html">Web 是怎样工作的</a><p class="desc">浏览器、URL、DNS、HTTP、HTML/CSS/JS 的边界。</p></div></li>
+      <li><span class="num">0002</span><div><a class="lesson" href="0002-html-css-js-foundations.html">HTML、CSS、JavaScript 基础闭环</a><p class="desc">语义结构、样式层叠、DOM 事件和最小交互。</p></div></li>
+      <li><span class="num">0003</span><div><a class="lesson" href="0003-layout-responsive-accessibility.html">布局、响应式和可访问性</a><p class="desc">Flex、Grid、移动端断点、键盘和表单可访问性。</p></div></li>
+      <li><span class="num">0004</span><div><a class="lesson" href="0004-react-typescript-components.html">React + TypeScript 组件模型</a><p class="desc">JSX、props、state、事件、类型边界和组件拆分。</p></div></li>
+      <li><span class="num">0005</span><div><a class="lesson" href="0005-react-state-forms-query-tests.html">React 状态、表单、数据获取和测试</a><p class="desc">本地状态、服务端状态、表单提交、TanStack Query、Vitest。</p></div></li>
+      <li><span class="num">0006</span><div><a class="lesson" href="0006-git-branching-commits.html">Git 分支、提交和协作</a><p class="desc">branch、commit、merge、rebase、pull request 和提交故事。</p></div></li>
+      <li><span class="num">0007</span><div><a class="lesson" href="0007-backend-runtime-http-api.html">后端运行时与 HTTP API</a><p class="desc">Node/Python 的后端位置、请求响应、路由、中间件和错误。</p></div></li>
+      <li><span class="num">0008</span><div><a class="lesson" href="0008-crud-api-design.html">CRUD API 设计</a><p class="desc">资源、方法、状态码、验证、分页、幂等和 API 合约。</p></div></li>
+      <li><span class="num">0009</span><div><a class="lesson" href="0009-sql-database-modeling.html">SQL 数据建模与查询</a><p class="desc">表、主键、外键、连接、索引、事务和查询计划直觉。</p></div></li>
+      <li><span class="num">0010</span><div><a class="lesson" href="0010-auth-sessions-jwt-oauth.html">认证、Session、JWT 与 OAuth</a><p class="desc">身份、授权、cookie、token、OAuth flow 和常见安全坑。</p></div></li>
+      <li><span class="num">0011</span><div><a class="lesson" href="0011-cloud-building-blocks.html">云服务积木：S3、CloudFront、Lambda、API Gateway</a><p class="desc">对象存储、CDN、Serverless、API 入口和权限边界。</p></div></li>
+      <li><span class="num">0012</span><div><a class="lesson" href="0012-infrastructure-as-code-terraform.html">Infrastructure as Code 与 Terraform</a><p class="desc">provider、resource、state、plan、apply、module 和环境隔离。</p></div></li>
+      <li><span class="num">0013</span><div><a class="lesson" href="0013-ci-cd-pipelines.html">CI/CD 流水线</a><p class="desc">测试、构建、部署、环境、密钥、回滚和 GitHub Actions。</p></div></li>
+      <li><span class="num">0014</span><div><a class="lesson" href="0014-observability-logs-metrics-alerts.html">日志、指标和告警</a><p class="desc">可观测性三件套、CloudWatch、SLO、告警噪音和故障复盘。</p></div></li>
+      <li><span class="num">0015</span><div><a class="lesson" href="0015-system-design.html">系统设计基础</a><p class="desc">需求、容量、数据模型、缓存、队列、一致性和可靠性取舍。</p></div></li>
+      <li><span class="num">0016</span><div><a class="lesson" href="0016-projects-portfolio-interviews.html">项目、作品集和面试表达</a><p class="desc">项目打磨、Demo 录制、作品集、简历 bullet 和面试故事。</p></div></li>
+    </ol>
+  </section>
+</main>
+</body>
+</html>

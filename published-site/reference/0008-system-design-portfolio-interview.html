@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>系统设计、项目与面试速查</title>
+  <style>
+    :root { --ink:#17212b; --muted:#5d6875; --line:#dce3ea; --soft:#f6f8fa; --accent:#0f766e; }
+    body { margin:0; color:var(--ink); background:white; font:16px/1.62 ui-serif, Georgia, "Noto Serif CJK SC", serif; }
+    main { max-width:1060px; margin:0 auto; padding:46px 24px 76px; }
+    h1,h2,h3,th,.meta,code { font-family:ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing:0; }
+    h1 { margin:0 0 8px; font-size:34px; }
+    h2 { margin:34px 0 12px; padding-top:18px; border-top:1px solid var(--line); }
+    table { width:100%; border-collapse:collapse; margin:14px 0 24px; }
+    th,td { border-bottom:1px solid var(--line); padding:10px 8px; text-align:left; vertical-align:top; }
+    th { color:var(--muted); font-size:12px; text-transform:uppercase; }
+    code,pre { background:var(--soft); border-radius:6px; }
+    code { padding:1px 5px; }
+    pre { overflow:auto; padding:14px; border:1px solid var(--line); }
+    .meta { color:var(--muted); font-size:14px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>系统设计、项目与面试速查</h1>
+  <p class="meta">配套课程 0015-0016 | 参考 AWS Well-Architected、Google SRE、GitHub Pages、MDN 求职资料</p>
+
+  <section>
+    <h2>系统设计回答框架</h2>
+    <pre><code>1. clarify requirements
+2. define APIs and core flows
+3. model data
+4. estimate scale
+5. draw high-level architecture
+6. choose storage, cache, queue, compute
+7. handle failure, security, observability
+8. call out tradeoffs and next iterations</code></pre>
+  </section>
+
+  <section>
+    <h2>常见取舍</h2>
+    <table>
+      <thead><tr><th>选择</th><th>得到</th><th>付出</th></tr></thead>
+      <tbody>
+        <tr><td>缓存</td><td>低延迟、少打数据库。</td><td>失效策略、数据过期、一致性复杂度。</td></tr>
+        <tr><td>队列</td><td>削峰、异步、解耦。</td><td>最终一致性、重试、重复消费。</td></tr>
+        <tr><td>读写分离</td><td>读扩展能力。</td><td>复制延迟、读到旧数据。</td></tr>
+        <tr><td>Serverless</td><td>少运维、按需扩展。</td><td>冷启动、运行时限制、可观测性细节。</td></tr>
+        <tr><td>微服务</td><td>团队独立交付、边界清晰。</td><td>网络故障、分布式追踪、部署复杂度。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>项目展示清单</h2>
+    <table>
+      <thead><tr><th>位置</th><th>必须有</th><th>加分项</th></tr></thead>
+      <tbody>
+        <tr><td>README</td><td>问题、功能、技术栈、运行方式、截图。</td><td>架构图、测试说明、部署地址。</td></tr>
+        <tr><td>Demo</td><td>2 分钟核心流程录屏。</td><td>先讲用户问题，再讲技术取舍。</td></tr>
+        <tr><td>代码</td><td>清晰目录、环境变量模板、迁移脚本。</td><td>CI badge、测试覆盖、监控截图。</td></tr>
+        <tr><td>作品集</td><td>项目卡片、链接、你的职责。</td><td>技术深挖页、系统设计说明。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>简历 bullet 模板</h2>
+    <pre><code>Built [feature/system] using [technology],
+improving [metric/outcome] by [number],
+while handling [constraint/tradeoff].</code></pre>
+    <p>中文表达可以是：使用 X 构建 Y，在 Z 约束下实现 A 结果。不要只列“熟悉 React、熟悉 Node”。</p>
+  </section>
+
+  <section>
+    <h2>项目面试故事</h2>
+    <table>
+      <thead><tr><th>问题</th><th>你的回答要包含</th></tr></thead>
+      <tbody>
+        <tr><td>为什么做这个项目？</td><td>用户问题、业务场景、目标约束。</td></tr>
+        <tr><td>最难的技术点？</td><td>失败尝试、最终方案、权衡。</td></tr>
+        <tr><td>如何保证质量？</td><td>测试、类型、CI、监控、手动验收。</td></tr>
+        <tr><td>上线后怎么排障？</td><td>日志、指标、告警、request id、回滚。</td></tr>
+        <tr><td>下次会怎么改？</td><td>承认边界，给出优先级和可执行改进。</td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>

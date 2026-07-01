@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>0001 Web 是怎样工作的</title>
+  <style>
+    :root { --ink:#17212b; --muted:#5d6875; --line:#dce3ea; --soft:#f6f8fa; --accent:#0f766e; --note:#fff7df; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:white; font:17px/1.64 ui-serif, Georgia, "Noto Serif CJK SC", serif; }
+    main { max-width:920px; margin:0 auto; padding:46px 24px 76px; }
+    h1,h2,h3,.meta,summary,th,code { font-family:ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing:0; }
+    h1 { margin:0 0 8px; font-size:34px; line-height:1.15; }
+    h2 { margin:34px 0 12px; padding-top:18px; border-top:1px solid var(--line); font-size:22px; }
+    p { margin:0 0 14px; }
+    a { color:var(--accent); text-underline-offset:3px; }
+    code { background:var(--soft); border-radius:5px; padding:1px 5px; }
+    pre { overflow:auto; background:var(--soft); border:1px solid var(--line); border-radius:8px; padding:14px; }
+    table { width:100%; border-collapse:collapse; margin:14px 0; }
+    th,td { border-bottom:1px solid var(--line); padding:9px 8px; text-align:left; vertical-align:top; }
+    th { color:var(--muted); font-size:12px; text-transform:uppercase; }
+    .meta { color:var(--muted); font-size:14px; }
+    .callout { border-left:4px solid var(--accent); background:var(--soft); padding:15px 17px; margin:18px 0; }
+    .note { border-left-color:#b68b00; background:var(--note); }
+    details { border:1px solid var(--line); border-radius:8px; padding:12px 14px; margin:10px 0; background:white; }
+    summary { cursor:pointer; font-weight:700; }
+    li { margin:7px 0; }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>0001 Web 是怎样工作的</h1>
+    <p class="meta">Q1 Frontend Fundamentals | 预计 25 分钟 | <a href="../lectures/index.html?trace=lecture_01">lecture trace</a></p>
+    <p>今天只拿下一件事：当你输入一个 URL，浏览器、网络、服务器和前端代码如何合作，把一串地址变成一个可交互页面。</p>
+  </header>
+
+  <section>
+    <h2>核心模型</h2>
+    <pre><code>URL -> DNS -> TCP/TLS -> HTTP request -> server
+    -> HTTP response -> HTML parser -> DOM
+    -> CSS parser -> CSSOM -> render tree
+    -> JavaScript -> events -> updates</code></pre>
+    <p>HTML、CSS、JavaScript 不是同一种东西。HTML 是结构，CSS 是表现，JavaScript 是行为。浏览器把它们组合成 DOM、样式和事件循环。</p>
+  </section>
+
+  <section>
+    <h2>关键概念</h2>
+    <table>
+      <thead><tr><th>概念</th><th>你要能解释</th></tr></thead>
+      <tbody>
+        <tr><td>URL</td><td>协议、域名、路径、查询参数分别指向什么。</td></tr>
+        <tr><td>DNS</td><td>为什么浏览器需要把域名解析成 IP。</td></tr>
+        <tr><td>HTTP</td><td>request 和 response 由 method、status、headers、body 组成。</td></tr>
+        <tr><td>渲染</td><td>HTML 生成 DOM，CSS 生成 CSSOM，二者合成 render tree。</td></tr>
+        <tr><td>DevTools</td><td>Network 面板能看到每个资源的请求、状态码、耗时和响应头。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>练习</h2>
+    <ol>
+      <li>打开任意网页，按 F12 打开 DevTools 的 Network。</li>
+      <li>刷新页面，找到第一个 document 请求。</li>
+      <li>写下它的 URL、method、status code、content-type。</li>
+      <li>再找一个 CSS 或 JS 请求，说明它和 document 请求的关系。</li>
+    </ol>
+    <div class="callout note">交付物：画一张“URL 到页面可交互”的流程图，不超过 10 个节点。</div>
+  </section>
+
+  <section>
+    <h2>自测</h2>
+    <details><summary>为什么 URL 里有域名还需要 DNS？</summary><p>因为网络传输最终需要 IP 地址。DNS 把人类容易记的域名解析成机器可路由的地址。</p></details>
+    <details><summary>HTTP response 的 status code 说明什么？</summary><p>说明服务器如何处理请求。比如 200 成功，404 未找到，500 服务器错误。</p></details>
+    <details><summary>HTML、CSS、JavaScript 的分工是什么？</summary><p>HTML 负责结构和语义，CSS 负责呈现和布局，JavaScript 负责交互和动态行为。</p></details>
+  </section>
+
+  <section>
+    <h2>主资料</h2>
+    <p>读 <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development">MDN Learn web development</a> 和 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP">MDN HTTP</a>。不懂的地方直接问 agent，把问题变成下一节课的起点。</p>
+  </section>
+</main>
+</body>
+</html>

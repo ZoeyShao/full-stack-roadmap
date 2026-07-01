@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>0013 CI/CD 流水线</title>
+<style>
+:root{--ink:#17212b;--muted:#5d6875;--line:#dce3ea;--soft:#f6f8fa;--accent:#0f766e;--note:#fff7df}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:white;font:17px/1.64 ui-serif,Georgia,"Noto Serif CJK SC",serif}main{max-width:920px;margin:0 auto;padding:46px 24px 76px}h1,h2,h3,.meta,summary,th,code{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:0}h1{margin:0 0 8px;font-size:34px;line-height:1.15}h2{margin:34px 0 12px;padding-top:18px;border-top:1px solid var(--line);font-size:22px}p{margin:0 0 14px}a{color:var(--accent);text-underline-offset:3px}code{background:var(--soft);border-radius:5px;padding:1px 5px}pre{overflow:auto;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:14px}table{width:100%;border-collapse:collapse;margin:14px 0}th,td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:left;vertical-align:top}th{color:var(--muted);font-size:12px;text-transform:uppercase}.meta{color:var(--muted);font-size:14px}.callout{border-left:4px solid var(--accent);background:var(--soft);padding:15px 17px;margin:18px 0}.note{border-left-color:#b68b00;background:var(--note)}details{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:10px 0;background:white}summary{cursor:pointer;font-weight:700}li{margin:7px 0}
+</style></head><body><main>
+<header><h1>0013 CI/CD 流水线</h1><p class="meta">Q3 Cloud + DevOps | 预计 35 分钟 | <a href="../lectures/index.html?trace=lecture_13">lecture trace</a></p><p>CI/CD 把“我觉得没问题”变成“每次变更都有自动证据”。</p></header>
+<section><h2>最小流水线</h2><pre><code>pull_request:
+  install
+  lint
+  typecheck
+  test
+  build
+
+main:
+  install
+  test
+  build
+  deploy
+  smoke-test</code></pre></section>
+<section><h2>GitHub Actions 词汇</h2><table><thead><tr><th>词</th><th>含义</th></tr></thead><tbody><tr><td>workflow</td><td>一条自动化流程。</td></tr><tr><td>job</td><td>在 runner 上运行的一组 step。</td></tr><tr><td>step</td><td>一个命令或 action。</td></tr><tr><td>secret</td><td>敏感配置，如 token 和云凭据。</td></tr><tr><td>environment</td><td>部署目标，如 staging、production。</td></tr></tbody></table></section>
+<section><h2>练习</h2><ol><li>写 PR 检查：lint、typecheck、test、build。</li><li>写 main 部署：build 后发布到 staging。</li><li>列出哪些值必须放 secret。</li><li>设计失败后如何回滚。</li></ol><div class="callout note">交付物：一份 GitHub Actions workflow 草稿。</div></section>
+<section><h2>自测</h2><details><summary>CI 和 CD 的区别是什么？</summary><p>CI 关注集成验证，CD 关注把验证过的变更交付或部署到环境。</p></details><details><summary>为什么不要在 workflow 里明文写密钥？</summary><p>仓库历史、日志和 fork 都可能泄露密钥，应该用 secret 或 OIDC。</p></details><details><summary>smoke test 是什么？</summary><p>部署后跑的最小关键路径检查，用来确认服务基本可用。</p></details></section>
+<section><h2>主资料</h2><p><a href="https://docs.github.com/en/actions">GitHub Actions Docs</a>。</p></section>
+</main></body></html>

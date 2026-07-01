@@ -1,0 +1,106 @@
+{
+  "files": {
+    "edtrace_lectures/lecture_08.py": "from .course import render\n\n\ndef main() -> None:\n    render(\"lecture_08\")\n"
+  },
+  "hidden_line_numbers": {
+    "edtrace_lectures/lecture_08.py": []
+  },
+  "steps": [
+    {
+      "stack": [
+        {
+          "path": "edtrace_lectures/lecture_08.py",
+          "line_number": 4,
+          "function_name": "main",
+          "code": "def main() -> None:"
+        }
+      ],
+      "env": {},
+      "renderings": []
+    },
+    {
+      "stack": [
+        {
+          "path": "edtrace_lectures/lecture_08.py",
+          "line_number": 5,
+          "function_name": "main",
+          "code": "render(\"lecture_08\")"
+        }
+      ],
+      "env": {},
+      "renderings": [
+        {
+          "type": "markdown",
+          "data": "# CRUD API \u8bbe\u8ba1\n\nQ2 Backend Fundamentals",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "**\u672c\u8bb2\u4f7f\u547d\uff1a** \u628a\u4e1a\u52a1\u5bf9\u8c61\u53d8\u6210\u7a33\u5b9a API \u5408\u7ea6\u3002",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "note",
+          "data": "\u5148\u5c1d\u8bd5\u4ece\u8bb0\u5fc6\u89e3\u91ca\u672c\u8bb2\u6982\u5ff5\uff0c\u518d\u6253\u5f00\u77ed\u8bfe\u548c\u5b98\u65b9\u8d44\u6599\u3002\u8fd9\u6837\u4f1a\u6bd4\u76f4\u63a5\u9605\u8bfb\u66f4\u80fd\u5efa\u7acb\u957f\u671f\u8bb0\u5fc6\u3002",
+          "style": null,
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u5b66\u4e60\u8def\u5f84\n\n- \u628a\u4e1a\u52a1\u540d\u8bcd\u6620\u5c04\u6210 REST resource\u3002\n- \u7528 HTTP method \u8868\u8fbe\u52a8\u4f5c\u3002\n- \u4e3a\u6210\u529f\u548c\u5931\u8d25\u8bbe\u8ba1\u72b6\u6001\u7801\u3002\n- \u8865\u9f50\u9a8c\u8bc1\u3001\u5206\u9875\u3001\u5e42\u7b49\u548c\u9519\u8bef\u7ed3\u6784\u3002",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u4ea4\u4ed8\u7269\n\n\u4e00\u4efd CRUD API \u5408\u7ea6\u3002",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u914d\u5957\u6750\u6599\n\n- \u77ed\u8bfe\uff1a`lessons/0008-crud-api-design.html`\n- \u901f\u67e5\uff1a`reference/0005-backend-api-database-cheatsheet.html`",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u4e3b\u8d44\u6599",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "link",
+          "data": "[MDN HTTP]",
+          "style": {},
+          "external_link": {
+            "title": "MDN HTTP",
+            "authors": null,
+            "organization": null,
+            "date": null,
+            "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
+            "description": null,
+            "notes": null
+          },
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u8bfe\u540e\u56de\u5fc6\n\n1. \u4e0d\u770b\u7b14\u8bb0\uff0c\u8bf4\u51fa\u672c\u8bb2\u6700\u91cd\u8981\u7684\u4e09\u4e2a\u6982\u5ff5\u3002\n2. \u89e3\u91ca\u672c\u8bb2\u4ea4\u4ed8\u7269\u4e3a\u4ec0\u4e48\u80fd\u8bc1\u660e\u4f60\u5b66\u4f1a\u4e86\u3002\n3. \u628a\u4e0d\u786e\u5b9a\u7684\u95ee\u9898\u8bb0\u4e0b\u6765\uff0c\u4e0b\u4e00\u8f6e\u95ee agent\u3002",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        }
+      ]
+    }
+  ]
+}

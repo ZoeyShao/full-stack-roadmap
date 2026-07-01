@@ -1,0 +1,11 @@
+[project]
+name = "full-stack-roadmap-courseware"
+version = "0.1.0"
+description = "Executable edtrace courseware for the Full-Stack Roadmap 2026 learning workspace."
+requires-python = ">=3.12"
+dependencies = [
+  "edtrace>=0.1.15",
+]
+
+[tool.uv]
+package = false

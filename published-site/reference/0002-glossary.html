@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>全栈术语表</title>
+  <style>
+    :root { --ink:#17212b; --muted:#5d6875; --line:#dce3ea; --accent:#0f766e; --soft:#f7faf9; }
+    body { margin:0; color:var(--ink); background:white; font:16px/1.62 ui-serif, Georgia, "Noto Serif CJK SC", serif; }
+    main { max-width:980px; margin:0 auto; padding:46px 24px 76px; }
+    h1,h2,dt,.meta { font-family:ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing:0; }
+    h1 { margin:0 0 8px; font-size:34px; }
+    h2 { margin:34px 0 12px; padding-top:18px; border-top:1px solid var(--line); }
+    dl { display:grid; grid-template-columns:220px 1fr; gap:0; border-top:1px solid var(--line); }
+    dt,dd { border-bottom:1px solid var(--line); padding:12px 10px; margin:0; }
+    dt { font-weight:700; background:var(--soft); }
+    dd { color:#27313c; }
+    .meta { color:var(--muted); font-size:14px; }
+    a { color:var(--accent); text-underline-offset:3px; }
+    @media (max-width:720px) { dl { grid-template-columns:1fr; } dt { border-bottom:0; } dd { padding-top:0; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>全栈术语表</h1>
+  <p class="meta">先用统一词汇学习，避免同一个概念换名字后重新迷路。</p>
+
+  <section>
+    <h2>Web 与前端</h2>
+    <dl>
+      <dt>HTML</dt><dd>页面的结构和语义。浏览器根据 HTML 构建 DOM。</dd>
+      <dt>CSS</dt><dd>页面的呈现规则，包括布局、颜色、字体、间距和响应式。</dd>
+      <dt>JavaScript</dt><dd>浏览器和后端都可运行的编程语言。前端里主要负责交互、状态和网络请求。</dd>
+      <dt>DOM</dt><dd>浏览器把 HTML 解析成的对象树，JavaScript 通过 DOM 读取和修改页面。</dd>
+      <dt>Flexbox</dt><dd>一维布局工具，适合一行或一列里的对齐、分布和伸缩。</dd>
+      <dt>Grid</dt><dd>二维布局工具，适合页面骨架、卡片矩阵和复杂行列布局。</dd>
+      <dt>Responsive Design</dt><dd>响应式设计，让同一页面适配不同屏幕尺寸、输入方式和分辨率。</dd>
+      <dt>Accessibility</dt><dd>可访问性，让键盘用户、读屏用户、低视力用户等也能完成同样任务。</dd>
+      <dt>React Component</dt><dd>React UI 的可复用单元，本质是返回 JSX 的函数。</dd>
+      <dt>Props</dt><dd>父组件传给子组件的数据。props 应视为只读输入。</dd>
+      <dt>State</dt><dd>组件随交互变化而记住的数据。state 变化会触发重新渲染。</dd>
+      <dt>Server State</dt><dd>来自服务器的数据，如用户列表和订单详情。它需要缓存、刷新、失效和错误处理。</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>后端与数据</h2>
+    <dl>
+      <dt>HTTP</dt><dd>客户端和服务器通信协议。核心对象是 request、response、method、status、headers、body。</dd>
+      <dt>API</dt><dd>系统暴露给其他系统或前端调用的接口合约。</dd>
+      <dt>REST Resource</dt><dd>REST 中的业务对象，如 users、projects、orders。用 URL 表示资源，用 HTTP method 表示动作。</dd>
+      <dt>CRUD</dt><dd>Create、Read、Update、Delete，常见业务数据操作四件套。</dd>
+      <dt>GraphQL</dt><dd>一种 API 查询语言和运行时。客户端声明需要的数据形状，服务端按 schema 解析。</dd>
+      <dt>Primary Key</dt><dd>表中唯一标识一行数据的字段，常见为 id。</dd>
+      <dt>Foreign Key</dt><dd>一个表引用另一个表主键的字段，用于表达关系和保护引用完整性。</dd>
+      <dt>Index</dt><dd>数据库为了加速查询维护的数据结构。能加快读，也会增加写入和存储成本。</dd>
+      <dt>Transaction</dt><dd>一组要么全部成功、要么全部失败的数据库操作。</dd>
+      <dt>Migration</dt><dd>数据库结构变化的版本化脚本。</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>认证、安全、云和运维</h2>
+    <dl>
+      <dt>Authentication</dt><dd>认证，回答“你是谁”。例如用户名密码、OAuth 登录。</dd>
+      <dt>Authorization</dt><dd>授权，回答“你能做什么”。例如角色、权限、资源所有权。</dd>
+      <dt>Session</dt><dd>服务端保存的登录状态，浏览器通常用 cookie 携带 session id。</dd>
+      <dt>JWT</dt><dd>JSON Web Token，一种携带 claims 的 token 格式。可签名，但签名不等于加密。</dd>
+      <dt>OAuth</dt><dd>授权框架，用于让第三方应用在用户同意后访问受保护资源。</dd>
+      <dt>S3</dt><dd>AWS 对象存储。基本单位是 bucket、object、key、metadata。</dd>
+      <dt>CloudFront</dt><dd>AWS CDN，用 edge location 缓存并分发静态或动态内容。</dd>
+      <dt>Lambda</dt><dd>AWS Serverless 计算服务。按事件触发函数运行。</dd>
+      <dt>API Gateway</dt><dd>AWS API 入口服务，可把 HTTP 请求转发到 Lambda 等后端。</dd>
+      <dt>IaC</dt><dd>Infrastructure as Code，用代码声明基础设施，使环境可审查、可复现。</dd>
+      <dt>Terraform State</dt><dd>Terraform 用来记录真实资源和代码资源映射的状态文件。</dd>
+      <dt>CI/CD</dt><dd>持续集成和持续交付/部署。用流水线自动测试、构建、发布。</dd>
+      <dt>Observability</dt><dd>可观测性，通过日志、指标、追踪理解系统运行状态。</dd>
+      <dt>SLO</dt><dd>Service Level Objective，服务可靠性目标，如 99.9% 请求成功率。</dd>
+      <dt>System Design</dt><dd>系统设计，围绕需求、数据、流量、组件、可靠性和取舍进行架构推理。</dd>
+    </dl>
+  </section>
+</main>
+</body>
+</html>

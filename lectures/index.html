@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Full-Stack Roadmap 2026 Lectures</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #5d6875;
+      --line: #dce3ea;
+      --soft: #f6f8fa;
+      --paper: #fffdf8;
+      --accent: #0f766e;
+      --accent-2: #9a6a10;
+      --code: #eef2f5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font: 16px/1.62 ui-serif, Georgia, "Noto Serif CJK SC", "Source Han Serif SC", serif;
+    }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 42px 24px 76px;
+    }
+    h1, h2, h3, nav, .meta, .trace, .pill, button, .lecture-title {
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+    h1 { margin: 0 0 8px; font-size: 34px; line-height: 1.12; }
+    h2 { margin: 32px 0 12px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 22px; }
+    h3 { margin: 20px 0 8px; font-size: 17px; }
+    p { margin: 0 0 13px; }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    code {
+      background: var(--code);
+      border-radius: 5px;
+      padding: 1px 5px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .92em;
+    }
+    .meta { color: var(--muted); font-size: 14px; }
+    .layout {
+      display: grid;
+      grid-template-columns: 310px 1fr;
+      gap: 26px;
+      margin-top: 24px;
+      align-items: start;
+    }
+    nav {
+      position: sticky;
+      top: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      padding: 12px;
+    }
+    nav a {
+      display: block;
+      border-radius: 6px;
+      padding: 8px 9px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    nav a[aria-current="page"] {
+      color: white;
+      background: var(--accent);
+    }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      padding: 24px;
+    }
+    .trace {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .lecture-title { margin: 4px 0 10px; font-size: 30px; line-height: 1.16; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 16px 0;
+    }
+    .box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+      padding: 14px 15px;
+    }
+    .box strong {
+      display: block;
+      margin-bottom: 5px;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+    ul, ol { padding-left: 22px; }
+    li { margin: 7px 0; }
+    .pill {
+      display: inline-block;
+      margin: 3px 5px 3px 0;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 2px 8px;
+      color: var(--muted);
+      background: white;
+      font-size: 12px;
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 8px 12px;
+      border-radius: 7px;
+      border: 1px solid var(--accent);
+      color: white;
+      background: var(--accent);
+      text-decoration: none;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 14px;
+    }
+    .button.secondary {
+      color: var(--accent);
+      background: white;
+    }
+    @media (max-width: 860px) {
+      main { padding: 30px 18px 60px; }
+      .layout { grid-template-columns: 1fr; }
+      nav { position: static; }
+      .grid { grid-template-columns: 1fr; }
+      .lecture-title { font-size: 26px; }
+    }
+    @media print {
+      body { background: white; }
+      main { max-width: none; padding: 20px; }
+      nav, .actions { display: none; }
+      .layout { display: block; }
+      .panel { border: 0; padding: 0; }
+      a { color: black; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Full-Stack Roadmap 2026 Lectures</h1>
+    <p class="meta">仿 CS336 trace 组织方式：用 <code>?trace=lecture_01</code> 打开指定讲次。每讲连接短课、速查卡、官方资料和交付物。</p>
+  </header>
+
+  <div class="layout">
+    <nav id="lecture-nav" aria-label="Lecture navigation"></nav>
+    <article id="lecture" class="panel"></article>
+  </div>
+</main>
+
+<script>
+const lectures = [
+  {
+    trace: "lecture_01",
+    quarter: "Q1",
+    title: "Web 是怎样工作的",
+    lesson: "../lessons/0001-how-the-web-works.html",
+    reference: "../reference/0003-frontend-cheatsheet.html",
+    sources: [
+      ["MDN Learn Web Development", "https://developer.mozilla.org/en-US/docs/Learn_web_development"],
+      ["MDN HTTP", "https://developer.mozilla.org/en-US/docs/Web/HTTP"]
+    ],
+    objective: "建立浏览器、URL、DNS、HTTP、HTML/CSS/JS 的整体地图，知道一次页面访问背后发生什么。",
+    concepts: ["browser", "URL", "DNS", "HTTP request", "HTTP response", "DOM", "CSSOM", "rendering"],
+    practice: ["画出从输入 URL 到页面可交互的 8 步流程。", "打开 DevTools Network，解释一个 HTML 请求和一个 JS 请求。"],
+    deliverable: "一张 Web 请求到渲染流程图。"
+  },
+  {
+    trace: "lecture_02",
+    quarter: "Q1",
+    title: "HTML、CSS、JavaScript 基础闭环",
+    lesson: "../lessons/0002-html-css-js-foundations.html",
+    reference: "../reference/0003-frontend-cheatsheet.html",
+    sources: [
+      ["MDN Structuring content with HTML", "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content"],
+      ["MDN CSS styling basics", "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics"],
+      ["MDN Dynamic scripting with JavaScript", "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting"]
+    ],
+    objective: "用一个最小页面连通语义结构、样式和交互。",
+    concepts: ["semantic HTML", "cascade", "box model", "DOM", "event listener", "form data"],
+    practice: ["写一个带表单的个人介绍页。", "提交表单后在页面中显示结果，不刷新页面。"],
+    deliverable: "一个无框架 HTML/CSS/JS 小页面。"
+  },
+  {
+    trace: "lecture_03",
+    quarter: "Q1",
+    title: "布局、响应式和可访问性",
+    lesson: "../lessons/0003-layout-responsive-accessibility.html",
+    reference: "../reference/0003-frontend-cheatsheet.html",
+    sources: [
+      ["MDN Flexbox", "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout"],
+      ["MDN Grid", "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout"],
+      ["W3C WAI Accessibility Intro", "https://www.w3.org/WAI/fundamentals/accessibility-intro/"]
+    ],
+    objective: "能选择 Flex 或 Grid，做移动端优先布局，并让表单和导航可键盘操作。",
+    concepts: ["flex axis", "grid track", "media query", "mobile-first", "focus", "label", "alt text"],
+    practice: ["做一个三档响应式卡片页面。", "只用键盘完成页面主要流程。"],
+    deliverable: "一个响应式且键盘可用的前端页面。"
+  },
+  {
+    trace: "lecture_04",
+    quarter: "Q1",
+    title: "React + TypeScript 组件模型",
+    lesson: "../lessons/0004-react-typescript-components.html",
+    reference: "../reference/0004-react-typescript-cheatsheet.html",
+    sources: [
+      ["React Learn", "https://react.dev/learn"],
+      ["TypeScript Handbook", "https://www.typescriptlang.org/docs/handbook/intro.html"]
+    ],
+    objective: "把静态 UI 拆成组件树，用 props、state 和 TypeScript 类型表达边界。",
+    concepts: ["component tree", "JSX", "props", "state", "event", "union type", "callback prop"],
+    practice: ["把一个项目列表拆成 Header、Filter、ProjectCard。", "为 props 和 API 数据写 TypeScript 类型。"],
+    deliverable: "一个有类型的 React 组件树。"
+  },
+  {
+    trace: "lecture_05",
+    quarter: "Q1",
+    title: "React 状态、表单、数据获取和测试",
+    lesson: "../lessons/0005-react-state-forms-query-tests.html",
+    reference: "../reference/0004-react-typescript-cheatsheet.html",
+    sources: [
+      ["TanStack Query React Docs", "https://tanstack.com/query/latest/docs/framework/react/overview"],
+      ["Vitest Guide", "https://vitest.dev/guide/"]
+    ],
+    objective: "区分本地状态和服务端状态，能处理表单提交、loading/error/success，并测试关键流程。",
+    concepts: ["local state", "server state", "query key", "mutation", "invalidate", "user-facing test"],
+    practice: ["用 mock API 加载项目列表。", "提交表单后 invalidate 列表。", "给提交成功流程写测试。"],
+    deliverable: "一个带数据获取和测试的 React 页面。"
+  },
+  {
+    trace: "lecture_06",
+    quarter: "Q1",
+    title: "Git 分支、提交和协作",
+    lesson: "../lessons/0006-git-branching-commits.html",
+    reference: "../reference/0001-roadmap-master-plan.html",
+    sources: [["Pro Git Book", "https://git-scm.com/book/en/v2"]],
+    objective: "用 Git 讲清楚变更历史，让一个功能从分支、提交到 PR 可审查。",
+    concepts: ["commit", "branch", "merge", "rebase", "remote", "pull request", "conflict"],
+    practice: ["为 Q1 项目创建 feature branch。", "把杂乱修改拆成 3 个有意义提交。"],
+    deliverable: "一段可 review 的 Git 提交历史。"
+  },
+  {
+    trace: "lecture_07",
+    quarter: "Q2",
+    title: "后端运行时与 HTTP API",
+    lesson: "../lessons/0007-backend-runtime-http-api.html",
+    reference: "../reference/0005-backend-api-database-cheatsheet.html",
+    sources: [
+      ["Node.js Learn", "https://nodejs.org/learn"],
+      ["Python Tutorial", "https://docs.python.org/3/tutorial/"],
+      ["MDN HTTP", "https://developer.mozilla.org/en-US/docs/Web/HTTP"]
+    ],
+    objective: "理解后端服务如何接收请求、路由、执行业务逻辑并返回响应。",
+    concepts: ["runtime", "route", "middleware", "request", "response", "status code", "error handler"],
+    practice: ["写一个 /health 接口。", "写一个返回 JSON 的 /projects 接口。", "加统一错误响应。"],
+    deliverable: "一个最小 HTTP API 服务。"
+  },
+  {
+    trace: "lecture_08",
+    quarter: "Q2",
+    title: "CRUD API 设计",
+    lesson: "../lessons/0008-crud-api-design.html",
+    reference: "../reference/0005-backend-api-database-cheatsheet.html",
+    sources: [
+      ["MDN HTTP request methods", "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods"],
+      ["GraphQL Learn", "https://graphql.org/learn/"]
+    ],
+    objective: "把业务对象变成稳定 API 合约，处理验证、分页、幂等和错误。",
+    concepts: ["resource", "CRUD", "validation", "pagination", "idempotency", "API contract"],
+    practice: ["为 projects 设计 6 个 REST endpoint。", "写出每个 endpoint 的成功和失败响应。"],
+    deliverable: "一份 CRUD API 合约。"
+  },
+  {
+    trace: "lecture_09",
+    quarter: "Q2",
+    title: "SQL 数据建模与查询",
+    lesson: "../lessons/0009-sql-database-modeling.html",
+    reference: "../reference/0005-backend-api-database-cheatsheet.html",
+    sources: [["PostgreSQL Tutorial", "https://www.postgresql.org/docs/current/tutorial.html"]],
+    objective: "能从业务实体设计表、关系、约束和查询，并理解索引的取舍。",
+    concepts: ["table", "primary key", "foreign key", "join", "index", "transaction", "migration"],
+    practice: ["设计 users/projects/tasks 三张表。", "写一个 join 查询返回项目和任务数。"],
+    deliverable: "一份数据库 schema 和 5 条核心 SQL。"
+  },
+  {
+    trace: "lecture_10",
+    quarter: "Q2",
+    title: "认证、Session、JWT 与 OAuth",
+    lesson: "../lessons/0010-auth-sessions-jwt-oauth.html",
+    reference: "../reference/0006-auth-security-cheatsheet.html",
+    sources: [
+      ["RFC 7519 JWT", "https://datatracker.ietf.org/doc/html/rfc7519"],
+      ["RFC 9700 OAuth 2.0 Security BCP", "https://datatracker.ietf.org/doc/html/rfc9700"],
+      ["OWASP Top Ten", "https://owasp.org/www-project-top-ten/"]
+    ],
+    objective: "分清认证、授权和会话，能解释 session、JWT、OAuth 的适用场景和风险。",
+    concepts: ["authentication", "authorization", "cookie", "session", "JWT claims", "OAuth authorization code", "CSRF"],
+    practice: ["画登录流程。", "列出删除项目接口的权限检查。", "解释 JWT 泄漏后的影响。"],
+    deliverable: "一份认证授权流程图和安全检查清单。"
+  },
+  {
+    trace: "lecture_11",
+    quarter: "Q3",
+    title: "云服务积木：S3、CloudFront、Lambda、API Gateway",
+    lesson: "../lessons/0011-cloud-building-blocks.html",
+    reference: "../reference/0007-cloud-devops-cheatsheet.html",
+    sources: [
+      ["AWS S3 User Guide", "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html"],
+      ["AWS CloudFront Developer Guide", "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html"],
+      ["AWS Lambda Developer Guide", "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html"],
+      ["Amazon API Gateway Developer Guide", "https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html"]
+    ],
+    objective: "理解前端静态资源、serverless API、CDN 和权限如何拼成云上应用。",
+    concepts: ["bucket", "object", "origin", "edge cache", "function", "gateway", "IAM role"],
+    practice: ["画 S3 + CloudFront 前端发布结构。", "画 API Gateway + Lambda 请求路径。"],
+    deliverable: "一个云上全栈架构草图。"
+  },
+  {
+    trace: "lecture_12",
+    quarter: "Q3",
+    title: "Infrastructure as Code 与 Terraform",
+    lesson: "../lessons/0012-infrastructure-as-code-terraform.html",
+    reference: "../reference/0007-cloud-devops-cheatsheet.html",
+    sources: [["Terraform Docs", "https://developer.hashicorp.com/terraform/docs"]],
+    objective: "用代码声明基础设施，理解 provider、resource、state、plan、apply 和 module。",
+    concepts: ["IaC", "provider", "resource", "state", "plan", "apply", "module", "drift"],
+    practice: ["写一个 Terraform 资源草稿。", "解释 state 文件为什么要保护。"],
+    deliverable: "一份可审查的 Terraform 计划说明。"
+  },
+  {
+    trace: "lecture_13",
+    quarter: "Q3",
+    title: "CI/CD 流水线",
+    lesson: "../lessons/0013-ci-cd-pipelines.html",
+    reference: "../reference/0007-cloud-devops-cheatsheet.html",
+    sources: [["GitHub Actions Docs", "https://docs.github.com/en/actions"]],
+    objective: "把测试、构建、部署自动化，让每次变更都有质量门禁。",
+    concepts: ["workflow", "job", "step", "runner", "secret", "artifact", "environment", "rollback"],
+    practice: ["写 PR 检查流水线。", "设计 main 分支部署流水线。"],
+    deliverable: "一份 GitHub Actions workflow 草稿。"
+  },
+  {
+    trace: "lecture_14",
+    quarter: "Q3",
+    title: "日志、指标和告警",
+    lesson: "../lessons/0014-observability-logs-metrics-alerts.html",
+    reference: "../reference/0007-cloud-devops-cheatsheet.html",
+    sources: [
+      ["Amazon CloudWatch User Guide", "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html"],
+      ["Google SRE Book", "https://sre.google/sre-book/table-of-contents/"]
+    ],
+    objective: "能用日志、指标和告警定位线上问题，而不是只看用户截图猜。",
+    concepts: ["structured log", "metric", "alarm", "dashboard", "SLO", "error budget", "request id"],
+    practice: ["为 API 设计 5 个关键日志字段。", "为 5xx rate 和 p95 latency 设计告警。"],
+    deliverable: "一份最小观测方案。"
+  },
+  {
+    trace: "lecture_15",
+    quarter: "Q4",
+    title: "系统设计基础",
+    lesson: "../lessons/0015-system-design.html",
+    reference: "../reference/0008-system-design-portfolio-interview.html",
+    sources: [
+      ["AWS Well-Architected Framework", "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"],
+      ["Google SRE Book", "https://sre.google/sre-book/table-of-contents/"]
+    ],
+    objective: "用需求、数据、流量、组件、可靠性和安全来组织系统设计回答。",
+    concepts: ["requirements", "capacity estimate", "cache", "queue", "consistency", "availability", "tradeoff"],
+    practice: ["设计一个项目管理系统。", "估算 QPS、存储和带宽。", "说明缓存和队列是否需要。"],
+    deliverable: "一份系统设计答题稿。"
+  },
+  {
+    trace: "lecture_16",
+    quarter: "Q4",
+    title: "项目、作品集和面试表达",
+    lesson: "../lessons/0016-projects-portfolio-interviews.html",
+    reference: "../reference/0008-system-design-portfolio-interview.html",
+    sources: [
+      ["GitHub Pages Docs", "https://docs.github.com/en/pages"],
+      ["MDN Finding a job", "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Soft_skills/Finding_a_job"]
+    ],
+    objective: "把技术项目打磨成能被别人理解和信任的作品集、简历和面试故事。",
+    concepts: ["README", "demo", "portfolio", "resume bullet", "STAR story", "tradeoff narrative"],
+    practice: ["为一个项目写 README 大纲。", "写 3 条简历 bullet。", "录制 2 分钟 Demo 脚本。"],
+    deliverable: "作品集项目页、Demo 脚本和简历 bullet。"
+  }
+];
+
+const nav = document.querySelector("#lecture-nav");
+const article = document.querySelector("#lecture");
+const params = new URLSearchParams(window.location.search);
+const selectedTrace = params.get("trace") || "lecture_01";
+const selected = lectures.find((lecture) => lecture.trace === selectedTrace) || lectures[0];
+
+nav.innerHTML = lectures.map((lecture, index) => {
+  const href = `?trace=${lecture.trace}`;
+  const current = lecture.trace === selected.trace ? ' aria-current="page"' : "";
+  return `<a href="${href}"${current}>${String(index + 1).padStart(2, "0")} ${lecture.title}</a>`;
+}).join("");
+
+function list(items) {
+  return `<ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+}
+
+function sourceList(items) {
+  return `<ul>${items.map(([label, url]) => `<li><a href="${url}">${label}</a></li>`).join("")}</ul>`;
+}
+
+article.innerHTML = `
+  <div class="trace">${selected.quarter} · ${selected.trace}</div>
+  <h2 class="lecture-title">${selected.title}</h2>
+  <p>${selected.objective}</p>
+
+  <div class="actions">
+    <a class="button" href="${selected.lesson}">打开本讲短课</a>
+    <a class="button secondary" href="../trace/?trace=var/traces/edtrace_lectures.${selected.trace}.json">打开 edtrace 交互课件</a>
+    <a class="button secondary" href="${selected.reference}">打开配套速查</a>
+    <a class="button secondary" href="../reference/0001-roadmap-master-plan.html">全年地图</a>
+  </div>
+
+  <h2>本讲概念</h2>
+  <p>${selected.concepts.map((concept) => `<span class="pill">${concept}</span>`).join("")}</p>
+
+  <div class="grid">
+    <div class="box">
+      <strong>练习</strong>
+      ${list(selected.practice)}
+    </div>
+    <div class="box">
+      <strong>交付物</strong>
+      <p>${selected.deliverable}</p>
+    </div>
+  </div>
+
+  <h2>官方资料</h2>
+  ${sourceList(selected.sources)}
+
+  <h2>学习动作</h2>
+  <ol>
+    <li>先读本页的目标和概念，不查资料，写下你已经知道的内容。</li>
+    <li>打开短课，完成里面的互动题和练习。</li>
+    <li>读官方资料中最相关的一页，把不懂的地方问 agent。</li>
+    <li>完成交付物，并用自己的话解释为什么这样做。</li>
+  </ol>
+`;
+</script>
+</body>
+</html>

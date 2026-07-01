@@ -1,0 +1,106 @@
+{
+  "files": {
+    "edtrace_lectures/lecture_09.py": "from .course import render\n\n\ndef main() -> None:\n    render(\"lecture_09\")\n"
+  },
+  "hidden_line_numbers": {
+    "edtrace_lectures/lecture_09.py": []
+  },
+  "steps": [
+    {
+      "stack": [
+        {
+          "path": "edtrace_lectures/lecture_09.py",
+          "line_number": 4,
+          "function_name": "main",
+          "code": "def main() -> None:"
+        }
+      ],
+      "env": {},
+      "renderings": []
+    },
+    {
+      "stack": [
+        {
+          "path": "edtrace_lectures/lecture_09.py",
+          "line_number": 5,
+          "function_name": "main",
+          "code": "render(\"lecture_09\")"
+        }
+      ],
+      "env": {},
+      "renderings": [
+        {
+          "type": "markdown",
+          "data": "# SQL \u6570\u636e\u5efa\u6a21\u4e0e\u67e5\u8be2\n\nQ2 Backend Fundamentals",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "**\u672c\u8bb2\u4f7f\u547d\uff1a** \u4ece\u4e1a\u52a1\u5b9e\u4f53\u8bbe\u8ba1\u8868\u3001\u5173\u7cfb\u3001\u7ea6\u675f\u548c\u67e5\u8be2\u3002",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "note",
+          "data": "\u5148\u5c1d\u8bd5\u4ece\u8bb0\u5fc6\u89e3\u91ca\u672c\u8bb2\u6982\u5ff5\uff0c\u518d\u6253\u5f00\u77ed\u8bfe\u548c\u5b98\u65b9\u8d44\u6599\u3002\u8fd9\u6837\u4f1a\u6bd4\u76f4\u63a5\u9605\u8bfb\u66f4\u80fd\u5efa\u7acb\u957f\u671f\u8bb0\u5fc6\u3002",
+          "style": null,
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u5b66\u4e60\u8def\u5f84\n\n- \u627e\u5b9e\u4f53\uff0c\u5b9a\u4e49 primary key\u3002\n- \u627e\u5173\u7cfb\uff0c\u5b9a\u4e49 foreign key\u3002\n- \u7528 join \u8bfb\u53d6\u8de8\u8868\u6570\u636e\u3002\n- \u7528\u7d22\u5f15\u548c\u4e8b\u52a1\u4fdd\u62a4\u6027\u80fd\u4e0e\u4e00\u81f4\u6027\u3002",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u4ea4\u4ed8\u7269\n\n\u4e00\u4efd\u6570\u636e\u5e93 schema \u548c\u6838\u5fc3 SQL\u3002",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u914d\u5957\u6750\u6599\n\n- \u77ed\u8bfe\uff1a`lessons/0009-sql-database-modeling.html`\n- \u901f\u67e5\uff1a`reference/0005-backend-api-database-cheatsheet.html`",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u4e3b\u8d44\u6599",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        },
+        {
+          "type": "link",
+          "data": "[PostgreSQL Tutorial]",
+          "style": {},
+          "external_link": {
+            "title": "PostgreSQL Tutorial",
+            "authors": null,
+            "organization": null,
+            "date": null,
+            "url": "https://www.postgresql.org/docs/current/tutorial.html",
+            "description": null,
+            "notes": null
+          },
+          "internal_link": null
+        },
+        {
+          "type": "markdown",
+          "data": "## \u8bfe\u540e\u56de\u5fc6\n\n1. \u4e0d\u770b\u7b14\u8bb0\uff0c\u8bf4\u51fa\u672c\u8bb2\u6700\u91cd\u8981\u7684\u4e09\u4e2a\u6982\u5ff5\u3002\n2. \u89e3\u91ca\u672c\u8bb2\u4ea4\u4ed8\u7269\u4e3a\u4ec0\u4e48\u80fd\u8bc1\u660e\u4f60\u5b66\u4f1a\u4e86\u3002\n3. \u628a\u4e0d\u786e\u5b9a\u7684\u95ee\u9898\u8bb0\u4e0b\u6765\uff0c\u4e0b\u4e00\u8f6e\u95ee agent\u3002",
+          "style": {},
+          "external_link": null,
+          "internal_link": null
+        }
+      ]
+    }
+  ]
+}
